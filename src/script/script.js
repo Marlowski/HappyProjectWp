@@ -26,4 +26,10 @@ $(document).ready(function () {
             //get nth child of banner class using the just retrieved data value and remove the active class
             $('.main-banner-container:nth-child('+activeElemDataValueADD+')').addClass("main-banner-image--active");
         });
+
+    //initiate title animation after some delay
+    setTimeout(function () {
+        let typeWritter = new TypeWritter(["people","life","love","project"]);
+        typeWritter.typeWriter().delay(10000);
+    }, 1); //600
 });

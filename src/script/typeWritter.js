@@ -1,48 +1,56 @@
-var j = 0;
-var i = 0;
-var txt = ['Lorem.','Ipsum'];
-var speed = 70;
-var functionTransition = 400;
+class TypeWritter {
+    i;
+    j;
+    functionTransition;
+    speed;
+    txt;     //array
 
-function typeWriterRemove() {
-    i = 0;
-    let currText = document.getElementById("typewriterText").innerHTML;
-    if ( i < currText.length) {
-        document.getElementById("typewriterText").innerHTML = currText.substring(0,currText.length-1);
-        i++;
-        setTimeout(typeWriterRemove, speed);
-    } else {
-        //reset index
-        i=0;
-        if(j < txt.length) {
-            setTimeout(typeWriter,functionTransition)
+    constructor(text) {
+        this.txt = text;
+        this.speed = 100;
+        this.speedR = 70;
+        this.functionTransition = 400;
+        this.i = 0;
+        this.j = 0;
+    }
+
+    typeWriter() {
+        //check if current word is completly writter
+        if (this.i < (this.txt)[this.j].length) {
+            let currText = $('#typewriterText');
+            //add next char to current word
+            currText.html(currText.html() + this.txt[this.j].charAt(this.i));
+            this.i++;
+            //loop function
+            setTimeout(this.typeWriter.bind(this), this.speed);
         } else {
-            //testing purposes
-            alert("done");
-            i=0;
-            j=0;
+            //go to the next word in the array
+            this.j++;
+            //delete current word again before writting next one
+            setTimeout(this.typeWriterRemove.bind(this),this.functionTransition);
+        }
+    }
+
+    typeWriterRemove() {
+        //check if last word was written
+        if(this.j >= this.txt.length) {
+            jQuery('#header-underline').removeClass('underline--hover');
+            return;
+        }
+        this.i = 0;
+        let currText = $('#typewriterText');
+        //check char length of current word
+        if ( this.i < currText.html().length) {
+            //remove last char of the current word
+            currText.html(currText.html().substring(0,currText.html().length-1));
+            this.i++;
+            //loop function
+            setTimeout(this.typeWriterRemove.bind(this), this.speedR);
+        } else {
+            //reset index
+            this.i=0;
+            //write next word
+            setTimeout(this.typeWriter.bind(this),this.functionTransition)
         }
     }
 }
-
-function typeWriter() {
-    if (i < txt[j].length) {
-        document.getElementById("typewriterText").innerHTML += txt[j].charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-        //word is written progress in the word array to get the next entity
-    } else {
-        j++;
-        //delete word again
-        setTimeout(typeWriterRemove,functionTransition);
-    }
-}
-
-/* applied to following html elems
-<div id=tpContainer>
-    <div id="typewriterText"></div>
-    <span class="typewriter">_</span>
-    </div>
-    <button onclick="typeWriter()">Write</button>
-    <button onclick="typeWriterRemove()">Delete</button>
-*/

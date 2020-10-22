@@ -18,12 +18,12 @@ body {
 
 /* -- wrapper -- */
 #main-wrapper {
-    padding: 75px 0;
+    padding: 50px 0;
     position: relative;
     display: inline-block;
     width: 100%;
     vertical-align: top;
-    height: 80vh;
+    height: 75vh;
 }
 
 #navigation-wrapper {
@@ -77,12 +77,11 @@ body {
 }
 
 /* -- header -- */
-#header-icon-bar {
+#header-wrapper {
     position: relative;
-    display: flex;
+    display: block;
+    width: 100%;
     height: 20vh;
-    align-items: center;
-    justify-content: space-between;
 }
 
 #logo-container {
@@ -92,6 +91,43 @@ body {
 #logo-container img {
     width: 20%;
     height: auto;
+}
+
+#main-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#main-title-container h1, #header-underline {
+    font-family: 'Inconsolata', monospace;
+    font-size: 3.5rem;
+    font-weight: 300;
+    display: inline-block;
+}
+
+#main-title-container h1:first-child {
+    margin-right: 5px;
+}
+#writingBlock {
+    padding: 10px;
+    background-color: #000000;
+    color: #FFFFFF;
+    display: inline-block;
+}
+
+#writingBlock h1 {
+    margin: 0;
+}
+.header-elem-container {
+    min-width: 140px;
+    width: 10%;
+    text-align: left;
+}
+.header-elem-container:nth-child(2) {
+    width: 18%;
 }
 
 /* -- navigation -- */
