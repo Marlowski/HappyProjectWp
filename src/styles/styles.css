@@ -1,0 +1,150 @@
+/* -- main -- */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 1em;
+    font-family: "Barlow Condensed", sans-serif;
+    --mainColor: #ffffff;
+}
+
+body {
+    font-family: inherit;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* -- wrapper -- */
+#main-wrapper {
+    padding: 75px 0;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    height: 80vh;
+}
+
+#navigation-wrapper {
+    display: flex;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38%;
+    height: 100%;
+    /* makes elem fit to inner content and not use 100% of avialable space,
+    here width cause of the horizontal flex direction */
+    align-items: flex-start;
+    /* make elements "block elements" */
+    -ms-flex-direction: column;
+    flex-direction: column;
+    /* vertical alignment */
+    justify-content: center;
+    padding-left: 8%;
+}
+
+#navigation-image-wrapper {
+    display: block;
+    height: 100%;
+    margin-left: auto;
+    position: relative;
+    width: 62%;
+    overflow: hidden;
+}
+
+.main-banner-container {
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    position: absolute !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: scaleX(1) skewX(5deg);
+    transition: 0s .45s;
+    opacity: 0;
+}
+
+.main-banner-image--active {
+    transform: scaleX(1);
+    transition: .4s cubic-bezier(.215, .61, .355, 1);
+    opacity: 1;
+    /* assure that transition is seen */
+    z-index: 9;
+}
+
+/* -- header -- */
+#header-icon-bar {
+    position: relative;
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo-container {
+    margin: auto 0;
+    padding-left: 8%;
+}
+#logo-container img {
+    width: 20%;
+    height: auto;
+}
+
+/* -- navigation -- */
+nav a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.nav-item {
+    display: inline-block;
+    line-height: 1em !important;
+    margin: 10px 0;
+    padding: 5px 10px 4px 8px;
+    position: relative;
+    vertical-align: top;
+    width: auto;
+    font-family: "Barlow Condensed",sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    /* slide effect credit: https://www.kirupa.com/html5/sliding_background_effect_on_link_hover.htm */
+    background-image: linear-gradient(90deg,
+    #FFFFFF 0%,
+    #FFFFFF 50%,
+    #000000 50%,
+    #000000 100%);
+    background-size: 201%;
+    transition: background-position .3s cubic-bezier(.165,.84,.44,1),color .1s;
+    transition-delay: 0.0s, 0.15s;
+}
+
+.nav-title {
+    display: inline-block;
+}
+
+/* '_' blink animation */
+@keyframes blink {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0;}
+
+}
+
+.underline {
+    font-weight: 500;
+}
+
+/* toggle class applied via js */
+.underline--hover {
+    animation: blink .7s infinite;
+}
+
+/* toggle class applied via js */
+.nav-item--hover {
+    color: #FFFFFF;
+    background-position: -100% 100%;
+}
