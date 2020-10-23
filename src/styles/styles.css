@@ -5,11 +5,11 @@
 
 :root {
     font-size: 1em;
-    font-family: "Barlow Condensed", sans-serif;
+    font-family: 'Inconsolata', monospace;
     --mainColor: #ffffff;
 }
 
-body {
+html, body {
     font-family: inherit;
     height: 100%;
     margin: 0;
@@ -99,10 +99,10 @@ body {
     align-items: center;
     text-align: center;
     white-space: nowrap;
+    height: inherit;
 }
 
 #main-title-container h1, #header-underline {
-    font-family: 'Inconsolata', monospace;
     font-size: 3.5rem;
     font-weight: 300;
     display: inline-block;
@@ -123,11 +123,11 @@ body {
 }
 .header-elem-container {
     min-width: 140px;
-    width: 10%;
+    width: 9rem;
     text-align: left;
 }
 .header-elem-container:nth-child(2) {
-    width: 18%;
+    width: 15.6rem;
 }
 
 /* -- navigation -- */
@@ -144,7 +144,6 @@ nav a {
     position: relative;
     vertical-align: top;
     width: auto;
-    font-family: "Barlow Condensed",sans-serif;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 3.5rem;
@@ -167,7 +166,6 @@ nav a {
 @keyframes blink {
     0%, 100% {opacity: 1;}
     50% {opacity: 0;}
-
 }
 
 .underline {
@@ -183,4 +181,55 @@ nav a {
 .nav-item--hover {
     color: #FFFFFF;
     background-position: -100% 100%;
+}
+
+
+/* -- footer -- */
+footer {
+    background-color: #000000;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin: 0 40px;
+}
+
+.footer-container h4, .footer-container a {
+    color: white;
+    text-decoration: none;
+    font-weight: 200;
+}
+.footer-container a:hover {
+    text-decoration: underline;
+}
+.footer-container a:first-child {
+    margin-right: 20px;
+}
+
+
+/* -- media querys -- */
+/* ipad + some pixel above */
+@media only screen and (max-width: 850px) {
+    #navigation-wrapper {
+        width: 55%;
+    }
+    #header-wrapper {
+        height: 13vh;
+    }
+    #main-wrapper {
+        padding: 25px 0;
+    }
+    .nav-item {
+        margin: 20px 0;
+    }
 }

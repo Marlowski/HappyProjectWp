@@ -31,5 +31,5 @@ $(document).ready(function () {
     setTimeout(function () {
         let typeWritter = new TypeWritter(["people","life","love","project"]);
         typeWritter.typeWriter().delay(10000);
-    }, 1); //600
+    }, 600); //600
 });
