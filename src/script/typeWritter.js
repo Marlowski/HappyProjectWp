@@ -30,7 +30,7 @@ class TypeWritter {
             setTimeout(this.typeWriterRemove.bind(this),this.functionTransition);
         }
     }
-
+// TO DO: wenn project getyped wird dann erst menü punkte gleichzeitig mit rausrollen
     typeWriterRemove() {
         //check if last word was written
         if(this.j >= this.txt.length) {
