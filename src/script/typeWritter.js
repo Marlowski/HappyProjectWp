@@ -5,9 +5,10 @@ class TypeWritter {
     speed;
     selector;
     udSelector;
+    booleanBlink;
     txt;     //array
 
-    constructor(text,css_selector,underline_selector) {
+    constructor(text,css_selector,underline_selector,disable_blink) {
         this.txt = text;
         this.selector = css_selector;
         this.udSelector = underline_selector;
@@ -16,6 +17,7 @@ class TypeWritter {
         this.functionTransition = 400;
         this.i = 0;
         this.j = 0;
+        this.booleanBlink = disable_blink;
     }
 
     typeWriter() {
@@ -34,11 +36,13 @@ class TypeWritter {
             setTimeout(this.typeWriterRemove.bind(this),this.functionTransition);
         }
     }
-// TO DO: wenn project getyped wird dann erst menü punkte gleichzeitig mit rausrollen
+
     typeWriterRemove() {
         //check if last word was written
         if(this.j >= this.txt.length) {
-            jQuery(this.udSelector).removeClass('underline--hover');
+            if(this.booleanBlink) {
+                jQuery(this.udSelector).removeClass('underline--hover');
+            }
             return;
         }
         this.i = 0;

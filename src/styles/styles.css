@@ -1,24 +1,7 @@
-/* -- main -- */
-*, *::after, *::before {
-    box-sizing: border-box;
-}
-
-:root {
-    font-size: 1em;
-    font-family: 'Inconsolata', monospace;
-    --mainColor: #ffffff;
-}
-
-html, body {
-    font-family: inherit;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-}
-
 /* -- wrapper -- */
 #main-wrapper {
     padding: 50px 0;
+    margin: 0;
     position: relative;
     display: inline-block;
     width: 100%;
@@ -158,64 +141,15 @@ nav a {
     transition-delay: 0.0s, 0.15s;
 }
 
-.nav-title {
-    display: inline-block;
-}
-
-/* '_' blink animation */
-@keyframes blink {
-    0%, 100% {opacity: 1;}
-    50% {opacity: 0;}
-}
-
-.underline {
-    font-weight: 500;
-}
-
-/* toggle class applied via js */
-.underline--hover {
-    animation: blink .7s infinite;
-}
-
 /* toggle class applied via js */
 .nav-item--hover {
     color: #FFFFFF;
     background-position: -100% 100%;
 }
 
-
-/* -- footer -- */
-footer {
-    background-color: #000000;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 5%;
-    width: 100%;
-    overflow: hidden;
+.nav-title {
+    display: inline-block;
 }
-
-#footer-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    height: 100%;
-    margin: 0 40px;
-}
-
-.footer-container h4, .footer-container a {
-    color: white;
-    text-decoration: none;
-    font-weight: 200;
-}
-.footer-container a:hover {
-    text-decoration: underline;
-}
-.footer-container a:first-child {
-    margin-right: 20px;
-}
-
 
 /* -- media querys -- */
 /* ipad + some pixel above */
@@ -255,9 +189,6 @@ footer {
     }
     #header-wrapper {
         height: 17vh;
-    }
-    #main-title-container h1, #header-underline {
-        font-size: 2.9rem;
     }
     #main-title-container .header-elem-container:first-child {
         text-align: right;

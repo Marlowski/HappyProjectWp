@@ -27,9 +27,48 @@ $(document).ready(function () {
             $('.main-banner-container:nth-child('+activeElemDataValueADD+')').addClass("main-banner-image--active");
         });
 
+    // -- landing page --
     //initiate title animation after some delay
-    setTimeout(function () {
-        let typeWritter = new TypeWritter(["people","life","love","project"],'#typewriterText','#header-underline');
-        typeWritter.typeWriter().delay(10000);
-    }, 600); //600
+    if(window.location.href.indexOf("index.html") > -1) {
+        console.log("landing page initiated"); //debugging purpose
+        setTimeout(function () {
+            let typeWritter = new TypeWritter(["people", "life", "love", "project"], '#typewriterText', '#header-underline',true);
+            typeWritter.typeWriter().delay(10000);
+        }, 600); //600
+    }
+    // -- project page --
+    else if(window.location.href.indexOf("projekte.html") > -1) {
+        console.log("project page initiated"); //debugging purpose
+        setTimeout(function () {
+            let typeWritter = new TypeWritter(["Projekte"], '#typewriterText', '#header-underline',false);
+            typeWritter.typeWriter().delay(10000);
+        }, 600); //600
+    }
+
+    /* project page box hover image change */
+    $('.project_nav_elem').hover(
+        function () {
+            let url = $(this).find('img').attr('src');
+            let format = "";
+            if(url.indexOf(".png") > -1) {
+                format = ".png";
+            } else if(url.indexOf(".svg") > -1) {
+                format = ".svg"
+            } else {
+                console.error("project_nav_elem hover - wrong image format");
+            }
+            $(this).find('img').attr('src',url.replace(format,"")+"-hover"+format);
+    }, function () {
+            let url = $(this).find('img').attr('src').replace("-hover","");
+            $(this).find('img').attr('src',url);
+    });
+
+    /* smooth scroll */
+    $('a').click(function(){
+        $('html, body').animate({
+            scrollTop: $( $(this).attr('href') ).offset().top
+        }, 500);
+        return false;
+    });
+
 });
