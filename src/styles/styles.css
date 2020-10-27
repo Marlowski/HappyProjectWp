@@ -108,8 +108,8 @@ html, body {
     display: inline-block;
 }
 
-#main-title-container h1:first-child {
-    margin-right: 5px;
+#main-title-container .header-elem-container:last-of-type {
+    margin-left: 7px;
 }
 #writingBlock {
     padding: 10px;
@@ -219,7 +219,7 @@ footer {
 
 /* -- media querys -- */
 /* ipad + some pixel above */
-@media only screen and (max-width: 850px) {
+@media only screen and (min-width: 580px) and (max-width: 850px) {
     #navigation-wrapper {
         width: 55%;
     }
@@ -231,5 +231,70 @@ footer {
     }
     .nav-item {
         margin: 20px 0;
+    }
+    #footer-wrapper {
+        font-size: 0.8rem;
+        margin: 0 20px;
+    }
+}
+
+/* phone + little above for smoother transition into ipad format */
+@media only screen and (max-width: 579px) {
+    #main-wrapper {
+        padding: 25px 0;
+    }
+    #navigation-wrapper {
+        width: 70%;
+    }
+    .nav-item {
+        font-size: 2.85rem;
+        margin: 20px 0;
+    }
+    #navigation-image-wrapper {
+        width: 80%;
+    }
+    #header-wrapper {
+        height: 17vh;
+    }
+    #main-title-container h1, #header-underline {
+        font-size: 2.9rem;
+    }
+    #main-title-container .header-elem-container:first-child {
+        text-align: right;
+    }
+    footer {
+        height: 7%;
+    }
+    #footer-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 0.8rem;
+        margin: 2px 5px;
+    }
+    .footer-container {
+        display: block;
+        vertical-align: center;
+    }
+    .footer-container h4 {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 374px) {
+    #navigation-wrapper {
+        width: 90%;
+    }
+    #header-wrapper {
+        height: 15vh;
+    }
+    #main-wrapper {
+        padding: 10px 0;
+    }
+    #main-title-container .header-elem-container:last-of-type {
+        margin-left: 2px;
+    }
+    .header-elem-container {
+        min-width: 80px;
     }
 }

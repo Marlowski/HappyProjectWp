@@ -29,7 +29,7 @@ $(document).ready(function () {
 
     //initiate title animation after some delay
     setTimeout(function () {
-        let typeWritter = new TypeWritter(["people","life","love","project"]);
+        let typeWritter = new TypeWritter(["people","life","love","project"],'#typewriterText','#header-underline');
         typeWritter.typeWriter().delay(10000);
     }, 600); //600
 });

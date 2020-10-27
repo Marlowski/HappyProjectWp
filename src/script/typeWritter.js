@@ -3,10 +3,14 @@ class TypeWritter {
     j;
     functionTransition;
     speed;
+    selector;
+    udSelector;
     txt;     //array
 
-    constructor(text) {
+    constructor(text,css_selector,underline_selector) {
         this.txt = text;
+        this.selector = css_selector;
+        this.udSelector = underline_selector;
         this.speed = 100;
         this.speedR = 70;
         this.functionTransition = 400;
@@ -15,9 +19,9 @@ class TypeWritter {
     }
 
     typeWriter() {
-        //check if current word is completly writter
+        //check if current word is completly written
         if (this.i < (this.txt)[this.j].length) {
-            let currText = $('#typewriterText');
+            let currText = $(this.selector);
             //add next char to current word
             currText.html(currText.html() + this.txt[this.j].charAt(this.i));
             this.i++;
@@ -34,11 +38,11 @@ class TypeWritter {
     typeWriterRemove() {
         //check if last word was written
         if(this.j >= this.txt.length) {
-            jQuery('#header-underline').removeClass('underline--hover');
+            jQuery(this.udSelector).removeClass('underline--hover');
             return;
         }
         this.i = 0;
-        let currText = $('#typewriterText');
+        let currText = $(this.selector);
         //check char length of current word
         if ( this.i < currText.html().length) {
             //remove last char of the current word
