@@ -14,7 +14,7 @@
 /* collage */
 #collage-wrapper {
     display: flex;
-    height: 35.5rem;
+    height: 77vh;
     flex-wrap: wrap;
 }
 .collage-container {
