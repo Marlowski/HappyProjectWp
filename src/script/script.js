@@ -46,7 +46,7 @@ $(document).ready(function () {
     }
 
     /* project page box hover image change */
-    $('.project_nav_elem').hover(
+    $('.collage-elem').hover(
         function () {
             let url = $(this).find('img').attr('src');
             let format = "";
