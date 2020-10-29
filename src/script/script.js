@@ -63,6 +63,22 @@ $(document).ready(function () {
             $(this).find('img').attr('src',url);
     });
 
+    /* proejct collage nav eleme hover + mark associated collage-elems */
+    $('.collage-nav-item').hover(function() {
+        $(this).find('.underline').addClass("underline--hover");
+        /* get data value, which contains info about which collage-elems need to be shown active (apply hover state)*/
+        let activeElems = String($(this).data("value")).split("");
+        for(let i=0; i < activeElems.length; i++) {
+            $('#ce'+activeElems[i]+ ' .box-link').addClass("box-link--hover");
+        }
+    }, function() {
+        $(this).find('.underline').removeClass("underline--hover");
+        let activeElems = String($(this).data("value")).split("");
+        for(let i=0; i < activeElems.length; i++) {
+            $('#ce'+activeElems[i]+ ' .box-link').removeClass("box-link--hover");
+        }
+    });
+
     /* smooth scroll */
     $('a').click(function(){
         $('html, body').animate({

@@ -70,6 +70,10 @@
     min-width: 7rem;
     padding: 20px;
 }
+.collage-nav-item {
+    cursor: pointer;
+}
+
 #ce6 img {
     width: 35%;
 }
@@ -78,7 +82,18 @@
 }
 #ce3 {
     flex: 20%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .75px;
+    background-color: #80fce3;
+    color: #000000;
 }
+
 #ce4 {
     flex: 65%;
 }
@@ -91,10 +106,6 @@
     text-align: center;
     justify-content: start;
 }
-#ce3 {
-    background-color: #80fce3;
-}
-
 
 
 #placeholder {
