@@ -80,7 +80,7 @@
 #ce1, #ce2 {
     flex: 1;
 }
-#ce3 {
+#ce7 {
     flex: 20%;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +97,7 @@
 #ce4 {
     flex: 65%;
 }
-#ce5, #ce7 {
+#ce5, #ce3 {
     flex: 48%
 }
 #ce6 {

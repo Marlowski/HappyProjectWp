@@ -67,15 +67,28 @@ $(document).ready(function () {
     $('.collage-nav-item').hover(function() {
         $(this).find('.underline').addClass("underline--hover");
         /* get data value, which contains info about which collage-elems need to be shown active (apply hover state)*/
-        let activeElems = String($(this).data("value")).split("");
+        /* data structured with "-": RELEVANT ITEMS - UNRELEVANT ITEMS */
+        let elemList = String($(this).data("value")).split("-");
+        let activeElems = elemList[0].split("");
+        let nonActiveElems = elemList[1].split("");
+        //add hover to relevant elems
         for(let i=0; i < activeElems.length; i++) {
             $('#ce'+activeElems[i]+ ' .box-link').addClass("box-link--hover");
         }
+        // put black shade on non relevant elems
+        for(let i=0; i < nonActiveElems.length; i++) {
+            $('#ce'+nonActiveElems[i]+ ' .box-link').addClass("box-link--shade");
+        }
     }, function() {
         $(this).find('.underline').removeClass("underline--hover");
-        let activeElems = String($(this).data("value")).split("");
+        let elemList = String($(this).data("value")).split("-");
+        let activeElems = elemList[0].split("");
+        let nonActiveElems = elemList[1].split("");
         for(let i=0; i < activeElems.length; i++) {
             $('#ce'+activeElems[i]+ ' .box-link').removeClass("box-link--hover");
+        }
+        for(let i=0; i < nonActiveElems.length; i++) {
+            $('#ce'+nonActiveElems[i]+ ' .box-link').removeClass("box-link--shade");
         }
     });
 
