@@ -6,8 +6,7 @@
 :root {
     font-size: 1em;
     font-family: 'Inconsolata', monospace;
-    --firstColor: #80fce3;
-    --secondColor: #f836ad;
+    --firstColor: #df817e;
 }
 
 html, body {
@@ -119,5 +118,25 @@ footer {
     background-color: #000000;
     opacity: .5;
     transition: .3s ease;
+}
 
+.flexbox {
+    display: flex;
+    align-items: stretch;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+.flexbox-child {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    min-height: 400px;
+}
+.flexbox-title {
+    width: 100%;
+    display: block;
+    margin: auto 0;
+}
+.flexbox-content {
+    padding: 0 40px 40px 40px;
 }
