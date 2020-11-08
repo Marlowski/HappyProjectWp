@@ -63,7 +63,7 @@ $(document).ready(function () {
             $(this).find('img').attr('src',url);
     });
 
-    /* proejct collage nav eleme hover + mark associated collage-elems */
+    /* project collage nav eleme hover + mark associated collage-elems */
     $('.collage-nav-item').hover(function() {
         $(this).find('.underline').addClass("underline--hover");
         /* get data value, which contains info about which collage-elems need to be shown active (apply hover state)*/
@@ -78,6 +78,7 @@ $(document).ready(function () {
         // put black shade on non relevant elems
         for(let i=0; i < nonActiveElems.length; i++) {
             $('#ce'+nonActiveElems[i]+ ' .box-link').addClass("box-link--shade");
+            $('#ce'+nonActiveElems[i]+ ' .collage-text-itembox').css('filter','blur(1px)')
         }
     }, function() {
         $(this).find('.underline').removeClass("underline--hover");
@@ -89,6 +90,7 @@ $(document).ready(function () {
         }
         for(let i=0; i < nonActiveElems.length; i++) {
             $('#ce'+nonActiveElems[i]+ ' .box-link').removeClass("box-link--shade");
+            $('#ce'+nonActiveElems[i]+ ' .collage-text-itembox').css('filter','blur(0px)')
         }
     });
 

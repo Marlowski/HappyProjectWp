@@ -6,14 +6,18 @@
 :root {
     font-size: 1em;
     font-family: 'Inconsolata', monospace;
-    --firstColor: #df817e;
+    /*--firstColor: #df817e; */
+    --firstColor: #3bba9c;
+    --secondColor: #00031f;
 }
 
 html, body {
     min-height: 100vh;
     height: auto;
-    position: relative;
     margin: 0;
+}
+html {
+    position: relative;
 }
 
 h1, h2, h3, p {
@@ -131,6 +135,7 @@ footer {
     flex: 1;
     flex-wrap: wrap;
     min-height: 400px;
+    min-width: 350px;
 }
 .flexbox-title {
     width: 100%;

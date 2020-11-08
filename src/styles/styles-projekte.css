@@ -1,6 +1,6 @@
 /* -- wrapper -- */
 #main-wrapper {
-    margin: 2% 5%;
+    margin: 2% 5% 10% 5%;
 }
 #main-title-container {
     display: flex;
@@ -39,7 +39,7 @@
     padding: 10px;
     margin: 6px;
     color: white;
-    background-color: #000000;
+    background-color: var(--secondColor);
 }
 .collage-text-itembox {
     display: block;
@@ -99,6 +99,7 @@
     /* padding for logo to be not at the top after using nav */
     padding-top: 40px;
     text-align: left;
+    margin: 5% 0;
 }
 .project-wrapper h2:nth-child(1), .project-wrapper span {
     display: inline-block;
@@ -121,7 +122,7 @@
     color: var(--firstColor);
 }
 .project-wrapper .fr-version {
-    background-color: #000000;
+    background-color: var(--secondColor);
     color: white;
 }
 .project-wrapper .sec-version a {
