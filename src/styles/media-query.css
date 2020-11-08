@@ -1,0 +1,111 @@
+/* -- media querys -- */
+/* super small screen devices */
+@media only screen and (max-width: 374px) {
+    /* - index - */
+    #navigation-wrapper {
+        width: 90%;
+    }
+    #header-wrapper {
+        height: 15vh;
+    }
+    #main-wrapper {
+        padding: 10px 0;
+    }
+    #main-title-container .header-elem-container:last-of-type {
+        margin-left: 2px;
+    }
+    .header-elem-container {
+        min-width: 80px;
+    }
+}
+
+/* phone + little above for smoother transition into ipad format */
+@media only screen and (max-width: 579px) {
+    /* - index - */
+    #main-wrapper {
+        padding: 25px 0;
+    }
+    #navigation-wrapper {
+        width: 70%;
+    }
+    .nav-item {
+        font-size: 2.85rem;
+        margin: 20px 0;
+    }
+    #navigation-image-wrapper {
+        width: 80%;
+    }
+    #header-wrapper {
+        height: 17vh;
+    }
+    #main-title-container .header-elem-container:first-child {
+        text-align: right;
+    }
+    footer {
+        height: 3.5rem;
+    }
+    #footer-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 0.8rem;
+        margin: 2px 5px;
+    }
+    .footer-container {
+        display: block;
+        vertical-align: center;
+    }
+    .footer-container h4 {
+        margin: 0;
+    }
+
+    /* - projekte - */
+    /* top menu */
+    .collage-elem {
+        min-width: 100%;
+    }
+    #collage-wrapper {
+        height: auto;
+    }
+    /* remove menu nav hover points */
+    #ce7 {
+        display: none;
+    }
+    /* project boxes */
+    .project-wrapper section:nth-child(1), .project-wrapper section:nth-child(3), .project-wrapper section:nth-child(2n) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .flexbox-child {
+        min-width: 100%;
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+    .project-wrapper h2:nth-child(1), .project-wrapper span {
+        font-size: 2rem;
+    }
+    .project-wrapper a {
+        font-size: 1rem;
+    }
+}
+
+/* ipad + some pixel above */
+@media only screen and (min-width: 580px) and (max-width: 850px) {
+    /* - index - */
+    #navigation-wrapper {
+        width: 55%;
+    }
+    #header-wrapper {
+        height: 13vh;
+    }
+    #main-wrapper {
+        padding: 25px 0;
+    }
+    .nav-item {
+        margin: 20px 0;
+    }
+    #footer-wrapper {
+        font-size: 0.8rem;
+        margin: 0 20px;
+    }
+}
