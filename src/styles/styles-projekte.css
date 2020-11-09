@@ -92,14 +92,20 @@
 }
 .img-banner {
     width: 100%;
-    height: 100%;
-    margin-bottom: 25px;
+    margin: auto;
+}
+.img-banner-icon {
+    width: 50%;
 }
 .project-wrapper {
     /* padding for logo to be not at the top after using nav */
+    display: none;
     padding-top: 40px;
     text-align: left;
     margin: 5% 0;
+}
+#jmonds-project-elem {
+    display: block;
 }
 .project-wrapper h2:nth-child(1), .project-wrapper span {
     display: inline-block;

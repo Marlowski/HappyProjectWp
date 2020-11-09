@@ -17,6 +17,10 @@
     .header-elem-container {
         min-width: 80px;
     }
+    #ce6 {
+        flex-direction: row;
+        text-align: left;
+    }
 }
 
 /* phone + little above for smoother transition into ipad format */
@@ -67,25 +71,16 @@
     #collage-wrapper {
         height: auto;
     }
+    #ce6 {
+        flex-direction: row;
+        text-align: left;
+    }
     /* remove menu nav hover points */
     #ce7 {
         display: none;
     }
-    /* project boxes */
-    .project-wrapper section:nth-child(1), .project-wrapper section:nth-child(3), .project-wrapper section:nth-child(2n) {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .flexbox-child {
-        min-width: 100%;
-        min-height: auto;
-        margin-bottom: 20px;
-    }
-    .project-wrapper h2:nth-child(1), .project-wrapper span {
-        font-size: 2rem;
-    }
-    .project-wrapper a {
-        font-size: 1rem;
+    #collage-wrapper .collage-container:nth-child(2) {
+        flex: 100%;
     }
 }
 
@@ -107,5 +102,55 @@
     #footer-wrapper {
         font-size: 0.8rem;
         margin: 0 20px;
+    }
+
+    /* - projekte - */
+    /* top menu */
+    .collage-elem {
+        min-width: 100%;
+    }
+    #collage-wrapper {
+        height: auto;
+    }
+    #ce6 {
+        flex-direction: row;
+        text-align: left;
+    }
+    /* remove menu nav hover points */
+    #ce7 {
+        display: none;
+    }
+    #collage-wrapper .collage-container:nth-child(2) {
+        flex: 100%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    /* - project page - */
+    /* project boxes */
+    .project-wrapper section:nth-child(1), .project-wrapper section:nth-child(3), .project-wrapper section:nth-child(2n) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .flexbox-child {
+        min-width: 100%;
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+    .project-wrapper h2:nth-child(1), .project-wrapper span {
+        font-size: 2rem;
+    }
+    .project-wrapper a {
+        font-size: 1rem;
+    }
+    /* fix navigation box size */
+    #ce4 {
+        flex: 45%;
+    }
+    #ce4 h2 {
+        font-size: 1.1rem;
+    }
+    #ce7 {
+        padding-left: 10px;
     }
 }
