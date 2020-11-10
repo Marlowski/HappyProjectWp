@@ -75,8 +75,7 @@
     width: 20%;
     height: auto;
 }
-
-#main-title-container {
+#index-title-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,13 +84,13 @@
     height: inherit;
 }
 
-#main-title-container h1, #header-underline {
+#index-title-container h1, #header-underline {
     font-size: 3.5rem;
     font-weight: 300;
     display: inline-block;
 }
 
-#main-title-container .header-elem-container:last-of-type {
+#index-title-container .header-elem-container:last-of-type {
     margin-left: 7px;
 }
 #writingBlock {

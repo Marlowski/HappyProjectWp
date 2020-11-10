@@ -6,18 +6,17 @@
 :root {
     font-size: 1em;
     font-family: 'Inconsolata', monospace;
-    /*--firstColor: #df817e; */
     --firstColor: #3bba9c;
     --secondColor: #00031f;
 }
 
 html, body {
-    min-height: 100vh;
     height: auto;
     margin: 0;
 }
 html {
     position: relative;
+    min-height: 100vh;
 }
 
 h1, h2, h3, p {
@@ -38,11 +37,8 @@ h3 {
     margin-bottom: 10px;
 }
 
-#main-title-container h1, #header-underline {
+#main-title h1, #header-underline {
     font-size: 2.9rem;
-}
-#nav-controller {
-    margin-bottom: 30px;
 }
 #nav-controller a {
     font-weight: 100;
@@ -102,7 +98,6 @@ footer {
 .underline--hover {
     animation: blink .7s infinite;
 }
-
 .box-link {
     display: block;
     height: 100%;
@@ -123,25 +118,18 @@ footer {
     opacity: .5;
     transition: .3s ease;
 }
-
-.flexbox {
+#main-title-container {
     display: flex;
-    align-items: stretch;
-    margin: 25px 0;
-    flex-wrap: wrap;
-}
-.flexbox-child {
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    min-height: 400px;
-    min-width: 350px;
-}
-.flexbox-title {
+    flex: 100%;
     width: 100%;
-    display: block;
-    margin: auto 0;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    margin-bottom: 30px;
 }
-.flexbox-content {
-    padding: 0 40px 40px 40px;
+#main-title {
+    display: flex;
+    text-align: left;
+}
+#main-title > * {
+    display: inline-block;
 }

@@ -53,6 +53,14 @@ $(document).ready(function () {
             typeWritter.typeWriter().delay(10000);
         }, 600); //600
     }
+    // -- service page --
+    else if(window.location.href.indexOf("service.html") > -1) {
+        console.log("service page initiated"); //debugging purpose
+        setTimeout(function () {
+            let typeWritter = new TypeWritter(["Service"], '#typewriterText', '#header-underline',false);
+            typeWritter.typeWriter().delay(10000);
+        }, 600); //600
+    }
 
     /* project page box hover image change */
     $('.collage-elem').hover(

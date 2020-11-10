@@ -2,15 +2,6 @@
 #main-wrapper {
     margin: 2% 5% 10% 5%;
 }
-#main-title-container {
-    display: flex;
-    align-items: end;
-    text-align: left;
-}
-#main-title-container > * {
-    display: inline-block;
-}
-
 /* collage */
 #collage-wrapper {
     display: flex;
@@ -143,4 +134,25 @@
 }
 .project-wrapper section:nth-child(1), .project-wrapper section:nth-child(3) {
     margin-right: 10px;
+}
+.flexbox {
+    display: flex;
+    align-items: stretch;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+.flexbox-child {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    min-height: 400px;
+    min-width: 350px;
+}
+.flexbox-title {
+    width: 100%;
+    display: block;
+    margin: auto 0;
+}
+.flexbox-content {
+    padding: 0 40px 40px 40px;
 }
