@@ -61,6 +61,22 @@ $(document).ready(function () {
             typeWritter.typeWriter().delay(10000);
         }, 600); //600
     }
+    // -- kontakt page --
+    else if(window.location.href.indexOf("kontakt.html") > -1) {
+        console.log("contact page initiated"); //debugging purpose
+        setTimeout(function () {
+            let typeWritter = new TypeWritter(["Kontakt"], '#typewriterText', '#header-underline',false);
+            typeWritter.typeWriter().delay(10000);
+        }, 600); //600
+    }
+    // -- team page --
+    else if(window.location.href.indexOf("team.html") > -1) {
+        console.log("team page initiated"); //debugging purpose
+        setTimeout(function () {
+            let typeWritter = new TypeWritter(["Team"], '#typewriterText', '#header-underline',false);
+            typeWritter.typeWriter().delay(10000);
+        }, 600); //600
+    }
 
     /* project page box hover image change */
     $('.collage-elem').hover(

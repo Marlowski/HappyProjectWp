@@ -1,0 +1,543 @@
+/* -- main -- */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 1em;
+    font-family: 'Inconsolata', monospace;
+    --firstColor: #3bba9c;
+    --secondColor: #00031f;
+}
+
+html, body {
+    height: auto;
+    margin: 0;
+}
+html {
+    position: relative;
+    min-height: 100vh;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+h3 {
+    font-weight: 100;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+#main-title h1, #header-underline {
+    font-size: 2.9rem;
+}
+#nav-controller a {
+    font-weight: 100;
+    font-size: 1.1rem;
+}
+#nav-controller a::before {
+    content: '\25c5';
+    margin-right: 10px;
+}
+#nav-controller a:hover {
+    color: var(--firstColor);
+    transition: .2s ease;
+}
+#placeholder {
+    height: 2000px;
+}
+
+/* -- footer -- */
+footer {
+    background-color: #000000;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+#footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin: 0 40px;
+}
+
+.footer-container h4, .footer-container a {
+    color: white;
+    font-weight: 200;
+}
+.footer-container a:first-child {
+    margin-right: 20px;
+}
+.footer-container a:hover {
+    text-decoration: underline;
+}
+
+/* '_' blink animation */
+@keyframes blink {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0;}
+}
+
+.underline {
+    font-weight: 500;
+}
+
+/* toggle class applied via js */
+.underline--hover {
+    animation: blink .7s infinite;
+}
+.box-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #FFFFFF;
+    opacity: 0;
+}
+.box-link:hover, .box-link--hover {
+    opacity: .2;
+    transition: .3s ease;
+}
+.box-link--shade {
+    background-color: #000000;
+    opacity: .5;
+    transition: .3s ease;
+}
+#main-title-container {
+    display: flex;
+    flex: 100%;
+    width: 100%;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+#main-title {
+    display: flex;
+    text-align: left;
+}
+#main-title > * {
+    display: inline-block;
+}
+.main-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    flex-flow: row wrap;
+    margin: 2% 5% 4.5em 5%;
+}
+
+/* - index - */
+/* -- wrapper -- */
+#index-main-wrapper {
+    padding: 50px 0;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    height: 75vh;
+}
+
+#navigation-wrapper {
+    display: flex;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38%;
+    height: 100%;
+    /* makes elem fit to inner content and not use 100% of avialable space,
+    here width cause of the horizontal flex direction */
+    align-items: flex-start;
+    /* make elements "block elements" */
+    -ms-flex-direction: column;
+    flex-direction: column;
+    /* vertical alignment */
+    justify-content: center;
+    padding-left: 8%;
+}
+
+#navigation-image-wrapper {
+    display: block;
+    height: 100%;
+    margin-left: auto;
+    position: relative;
+    width: 62%;
+    overflow: hidden;
+}
+
+.main-banner-container {
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    position: absolute !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: scaleX(1) skewX(5deg);
+    transition: 0s .45s;
+    opacity: 0;
+}
+
+.main-banner-image--active {
+    transform: scaleX(1);
+    transition: .4s cubic-bezier(.215, .61, .355, 1);
+    opacity: 1;
+    /* assure that transition is seen */
+    z-index: 9;
+}
+
+/* -- header -- */
+#header-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 20vh;
+}
+
+#logo-container {
+    margin: auto 0;
+    padding-left: 8%;
+}
+#logo-container img {
+    width: 20%;
+    height: auto;
+}
+#index-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    height: inherit;
+}
+
+#index-title-container h1, #index-title-container #header-underline {
+    font-size: 3.5rem;
+    font-weight: 300;
+    display: inline-block;
+}
+
+#index-title-container .header-elem-container:last-of-type {
+    margin-left: 7px;
+}
+#writingBlock {
+    padding: 10px;
+    background-color: #000000;
+    color: #FFFFFF;
+    display: inline-block;
+}
+
+#writingBlock h1 {
+    margin: 0;
+}
+.header-elem-container {
+    min-width: 140px;
+    width: 9rem;
+    text-align: left;
+}
+.header-elem-container:nth-child(2) {
+    width: 15.6rem;
+}
+
+/* -- navigation -- */
+nav a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.nav-item {
+    display: inline-block;
+    line-height: 1em !important;
+    margin: 10px 0;
+    padding: 5px 10px 4px 8px;
+    position: relative;
+    vertical-align: top;
+    width: auto;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    /* slide effect credit: https://www.kirupa.com/html5/sliding_background_effect_on_link_hover.htm */
+    background-image: linear-gradient(90deg,
+    #FFFFFF 0%,
+    #FFFFFF 50%,
+    #000000 50%,
+    #000000 100%);
+    background-size: 201%;
+    transition: background-position .3s cubic-bezier(.165,.84,.44,1),color .1s;
+    transition-delay: 0.0s, 0.15s;
+}
+
+/* toggle class applied via js */
+.nav-item--hover {
+    color: #FFFFFF;
+    background-position: -100% 100%;
+}
+
+.nav-title {
+    display: inline-block;
+}
+
+/* - Service - */
+.service-flexbox {
+    flex: 1 1 17em;
+    margin: 10px;
+    background-color: var(--firstColor);
+    padding: 15px;
+}
+.service-flexbox h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+/* - Kontakt - */
+#fullsize-background {
+    background-color: var(--secondColor);
+}
+#fullsize-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../assets/contact/showroom.jpg') no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+/* - project page - */
+/* collage */
+#collage-wrapper {
+    display: flex;
+    flex: 100%;
+    height: 77vh;
+    flex-flow: row wrap;
+}
+.collage-container {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+#collage-wrapper .collage-container:nth-child(1) {
+    flex: 100%;
+}
+#collage-wrapper .collage-container:nth-child(2) {
+    flex: 60%;
+}
+#collage-wrapper .collage-container:nth-child(3) {
+    flex: 40%;
+}
+
+.collage-elem {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: 10px;
+    margin: 6px;
+    color: white;
+    background-color: var(--secondColor);
+}
+.collage-text-itembox {
+    display: block;
+}
+.collage-elem img {
+    width: 20%;
+    min-width: 7rem;
+    padding: 20px;
+}
+.collage-nav-item {
+    cursor: pointer;
+}
+
+#ce6 img {
+    width: 35%;
+}
+#ce1, #ce2 {
+    flex: 1;
+}
+#ce7 {
+    flex: 20%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .75px;
+    background-color: var(--firstColor);
+    color: #000000;
+}
+
+#ce4 {
+    flex: 65%;
+}
+#ce5, #ce3 {
+    flex: 48%
+}
+#ce6 {
+    flex: 100%;
+    flex-direction: column;
+    text-align: center;
+    justify-content: start;
+}
+
+
+.placeholder {
+    height: 2000px;
+}
+.img-banner {
+    width: 100%;
+    margin: auto;
+}
+.img-banner-icon {
+    width: 50%;
+}
+.project-wrapper {
+    /* padding for logo to be not at the top after using nav */
+    display: none;
+    padding-top: 40px;
+    text-align: left;
+    margin-top: 5%;
+}
+#jmonds-project-elem {
+    display: block;
+}
+.project-wrapper h2:nth-child(1), .project-wrapper span {
+    display: inline-block;
+    font-size: 2.9rem;
+    font-weight: 600;
+}
+.flexbox-title h3 {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-left: 5%;
+}
+.project-wrapper a {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+.project-wrapper .fr-version a {
+    color: var(--firstColor);
+}
+.project-wrapper .fr-version {
+    background-color: var(--secondColor);
+    color: white;
+}
+.project-wrapper .sec-version a {
+    color: #FFFFFF;
+}
+.project-wrapper .sec-version {
+    background-color: var(--firstColor);
+    color: #000000;
+}
+.project-wrapper section:nth-child(2n) {
+    margin-left: 10px;
+}
+.project-wrapper section:nth-child(1), .project-wrapper section:nth-child(3) {
+    margin-right: 10px;
+}
+.flexbox {
+    display: flex;
+    align-items: stretch;
+    margin: 25px 0;
+    flex-flow: row wrap;
+}
+.flexbox-child {
+    display: flex;
+    flex: 1;
+    flex-flow: row wrap;
+    min-height: 400px;
+    min-width: 350px;
+}
+.flexbox-title {
+    width: 100%;
+    display: block;
+    margin: auto 0;
+}
+.flexbox-content {
+    padding: 0 40px 40px 40px;
+}
+
+/* - Team page - */
+#team-collage-wrapper {
+    display: flex;
+    flex: 100%;
+    height: 70vh;
+    width: 100%;
+    flex-flow: row wrap;
+    position: absolute;
+    margin-top: 7em;
+}
+.team-collage-container {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+.team-collage-elem {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    background-color: var(--secondColor);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* first container + elems */
+#team-collage-wrapper .team-collage-container:nth-child(1) {
+    flex: 1 1 60%;
+}
+#team-collage-wrapper .team-collage-container:nth-child(1) .team-collage-elem:nth-child(1) {
+    flex: 1 1 30%;
+}
+#team-collage-wrapper .team-collage-container:nth-child(1) .team-collage-elem:nth-child(2) {
+    flex: 1 1 70%;
+    background-position: top;
+}
+#team-collage-wrapper .team-collage-container:nth-child(1) .team-collage-elem:nth-child(3) {
+    flex: 1 1 60%;
+}
+#team-collage-wrapper .team-collage-container:nth-child(1) .team-collage-elem:nth-child(4) {
+    flex: 1 1 40%;
+}
+/* second container + elems */
+#team-collage-wrapper .team-collage-container:nth-child(2) {
+    flex: 1 1 15%;
+}
+#team-collage-wrapper .team-collage-container:nth-child(2) .team-collage-elem:nth-child(1) {
+    flex: 1 1 100%;
+}
+/* third container + elems */
+#team-collage-wrapper .team-collage-container:nth-child(3) {
+    flex: 1 1 25%;
+}
+#team-collage-wrapper .team-collage-container:nth-child(3) .team-collage-elem {
+    flex: 1 1 100%;
+}
