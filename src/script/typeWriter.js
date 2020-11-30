@@ -1,13 +1,4 @@
-class TypeWritter {
-    i;
-    j;
-    functionTransition;
-    speed;
-    selector;
-    udSelector;
-    booleanBlink;
-    txt;     //array
-
+class TypeWriter {
     constructor(text,css_selector,underline_selector,disable_blink) {
         this.txt = text;
         this.selector = css_selector;

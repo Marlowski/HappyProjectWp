@@ -41,40 +41,40 @@ $(document).ready(function () {
     if(window.location.href.indexOf("index.html") > -1) {
         console.log("landing page initiated"); //debugging purpose
         setTimeout(function () {
-            let typeWritter = new TypeWritter(["people", "life", "love", "project"], '#typewriterText', '#header-underline',false);
-            typeWritter.typeWriter().delay(10000);
+            let typeWriter = new TypeWriter(["people", "life", "love", "project"], '#typewriterText', '#header-underline',false);
+            typeWriter.typeWriter().delay(10000);
         }, 600); //600
     }
     // -- project page --
     else if(window.location.href.indexOf("projekte.html") > -1) {
         console.log("project page initiated"); //debugging purpose
         setTimeout(function () {
-            let typeWritter = new TypeWritter(["Projekte"], '#typewriterText', '#header-underline',false);
-            typeWritter.typeWriter().delay(10000);
+            let typeWriter = new TypeWriter(["Projekte"], '#typewriterText', '#header-underline',false);
+            typeWriter.typeWriter().delay(10000);
         }, 600); //600
     }
     // -- service page --
     else if(window.location.href.indexOf("service.html") > -1) {
         console.log("service page initiated"); //debugging purpose
         setTimeout(function () {
-            let typeWritter = new TypeWritter(["Service"], '#typewriterText', '#header-underline',false);
-            typeWritter.typeWriter().delay(10000);
+            let typeWriter = new TypeWriter(["Service"], '#typewriterText', '#header-underline',false);
+            typeWriter.typeWriter().delay(10000);
         }, 600); //600
     }
     // -- kontakt page --
     else if(window.location.href.indexOf("kontakt.html") > -1) {
         console.log("contact page initiated"); //debugging purpose
         setTimeout(function () {
-            let typeWritter = new TypeWritter(["Kontakt"], '#typewriterText', '#header-underline',false);
-            typeWritter.typeWriter().delay(10000);
+            let typeWriter = new TypeWriter(["Kontakt"], '#typewriterText', '#header-underline',false);
+            typeWriter.typeWriter().delay(10000);
         }, 600); //600
     }
     // -- team page --
     else if(window.location.href.indexOf("team.html") > -1) {
         console.log("team page initiated"); //debugging purpose
         setTimeout(function () {
-            let typeWritter = new TypeWritter(["Team"], '#typewriterText', '#header-underline',false);
-            typeWritter.typeWriter().delay(10000);
+            let typeWriter = new TypeWriter(["Team"], '#typewriterText', '#header-underline',false);
+            typeWriter.typeWriter().delay(10000);
         }, 600); //600
     }
 

@@ -11,10 +11,35 @@ $(document).ready(function () {
         $("ol.sort-list").sortable();
     });
 
+    //ini keyboard listener
+    $(document).on('keydown', function(e) {
+        switch(e.which) {
+            // up
+            case 38:
+                let csUp = getCurrentSlider();
+                if(csUp-1 > 0) {
+                orientationNav(csUp-1);
+                scrollToAnchor('#slide-'+(csUp-1));
+            }
+                break;
+            // down
+            case 40:
+                let csDown = getCurrentSlider();
+                if(csDown+1 < 7) {
+                    orientationNav(csDown+1);
+                    scrollToAnchor('#slide-'+(csDown+1));
+                }
+                break;
+
+            default: return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+
     // smooth scroll while overflow is permanently 'hidden'
     $('a').click(function(){
         $('html, body').animate({
-            scrollTop: $( $(this).attr('href') ).offset().top
+            scrollTop: $($(this).attr('href')).offset().top
         }, 500);
         return false;
     });
@@ -38,7 +63,7 @@ function writeTitle(titleNumber,selector,underlineSelector) {
 
 function orientationNav(orderNumber) {
     // check if already activ elem got clicked and add active elem to correct nav elem
-    if($('#or-nav_'+orderNumber).hasClass('or-nav-elem-dark--active') || $('#or-nav_'+orderNumber).hasClass('or-nav-elem-light--active')) {
+    if($('#or-nav_'+orderNumber).hasClass('or-nav-elem--active')) {
         return;
     } else {
         $('#or-nav_'+ orderNumber).addClass('or-nav-elem--active');
@@ -51,4 +76,14 @@ function orientationNav(orderNumber) {
            $(this).removeClass('or-nav-elem--active');
         }
     });
+}
+
+//returns currently active slider
+function getCurrentSlider() {
+    return parseInt($('#orientation-nav-container').find('.or-nav-elem--active').attr('id').split('_')[1]);
+}
+
+//scroll function as <a> tag href replacment when key-up / down gets used
+function scrollToAnchor(selector){
+    $('html,body').animate({scrollTop: $(selector).offset().top},500);
 }
