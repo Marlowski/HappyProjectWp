@@ -29,7 +29,7 @@ $(document).ready(function () {
                 $('.main-banner-container:nth-child('+activeElemDataValueREMOVE+')').removeClass("main-banner-image--active");
             });
             $(this).addClass("nav-item--hover");
-            //get data value of the just hoverdd elem and parse it into an integer
+            //get data value of the just hovered elem and parse it into an integer
             let activeElemDataValueADD = parseInt($(this).data("value"));
             //get nth child of banner class using the just retrieved data value and remove the active class
             $('.main-banner-container:nth-child('+activeElemDataValueADD+')').addClass("main-banner-image--active");

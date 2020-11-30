@@ -1,0 +1,209 @@
+/* -- main -- */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 1em;
+    font-family: 'Inconsolata', monospace;
+    --firstColor: #3bba9c;
+    --secondColor: #00031f;
+}
+
+html, body {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+h1, h2, h3, p, span {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+a:visited {
+    color: black;
+}
+
+.slide {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    flex-flow: row wrap;
+    background-color: white;
+    color: black;
+    padding: 50px;
+}
+main .slide:nth-child(2n) {
+    background-color: black;
+    color: white;
+}
+
+/* - Slider orientation nav - */
+#orientation-nav-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 10px;
+    height: 100%;
+}
+
+.or-nav-elem {
+    margin: 12px 0;
+    padding: 6px;
+    border-radius: 50%;
+    border: 1px solid var(--firstColor);
+}
+.or-nav-elem--active {
+    background-color: var(--firstColor);
+}
+
+
+/* '_' blink animation */
+@keyframes blink {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0;}
+}
+.underline {
+    font-weight: 500;
+    animation: blink .7s infinite;
+    margin-left: 7px;
+}
+
+.main-title-container {
+    display: flex;
+    flex: 100%;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+.main-title {
+    display: flex;
+    text-align: left;
+}
+.main-title > * {
+    display: inline-block;
+}
+
+.main-title span, .underline {
+    font-size: 5.5vw;
+    line-height: 6vw;
+    font-weight: 600;
+}
+
+.nav-controller a {
+    font-weight: 100;
+    font-size: 1.1rem;
+}
+.nav-controller a::before {
+    content: '\25c5';
+    margin-right: 10px;
+}
+.nav-controller a:hover {
+    color: var(--firstColor);
+    transition: .2s ease;
+}
+
+/* - anwser containers */
+.sort-container {
+    position: absolute;
+    top: 70%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.sort-container p {
+    margin-bottom: 7px;
+}
+
+.next-btn {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.next-btn:hover {
+    color: var(--firstColor);
+}
+
+/* - drag & drop menu - */
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    top: 0;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ol {
+    margin: 0 0 9px 0;
+    min-height: 10px;
+    padding: 0;
+    width: 50%;
+}
+ol li {
+    display: block;
+    margin: 5px;
+    padding: 5px 50px;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: 300;
+    background: var(--firstColor);
+    cursor: grab;
+}
+ol li.placeholder {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+ol li.placeholder:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    margin-top: -5px;
+    left: -5px;
+    top: -4px;
+    border: 5px solid transparent;
+    border-left-color: #000000;
+    border-right: none;
+}
+
+
+/* - media querys - */
+@media only screen and (max-width: 579px) {
+    .main-title span, .underline {
+        font-size: 2.3rem;
+        line-height: 49px;
+    }
+}
+
+@media only screen and (min-width: 580px) and (max-width: 620px) {
+    .main-title span, .underline {
+        font-size: 10vw;
+        line-height: 11vw;
+    }
+}
+
+@media only screen and (min-width: 621px) and (max-width: 1050px) {
+    .main-title span, .underline {
+        font-size: 7vw;
+        line-height: 9vw;
+    }
+}
