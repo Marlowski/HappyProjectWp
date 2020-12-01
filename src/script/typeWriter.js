@@ -3,7 +3,7 @@ class TypeWriter {
         this.txt = text;
         this.selector = css_selector;
         this.udSelector = underline_selector;
-        this.speed = 100;
+        this.speed = 50; //100 on main page
         this.speedR = 70;
         this.functionTransition = 400;
         this.i = 0;

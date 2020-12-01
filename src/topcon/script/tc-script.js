@@ -48,9 +48,9 @@ $(document).ready(function () {
 const questions = [
     "Which technologies will most influence your business model in the future?",
     "We can keep our sales for the next 3 years without digitization measures.",
-    "What is more important? Digitization of existing business models or development of new business models.",
+    "What is more important?",
     "The qualifications of our employees are sufficient for the changes brought about by the digital transformation. Do you agree with the claim?",
-    "What are your strongest competitive threats? StartUps, tech companies, competitors from your own industry",
+    "What are your strongest competitive threats?",
     "What measures should the digital unit implement immediately?",
 ];
 
