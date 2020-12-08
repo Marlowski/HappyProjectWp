@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marlon Kerth">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    <link href="styles/tc-style.css" rel="stylesheet">
+    <!-- temp logo icon -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script/tc-script.js"></script>
+    <script src="../script/typeWriter.js"></script>
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div class="slide" id="study-data-slide">
+            <div id="transition-placeholder" class="disabled"></div>
+            <div id="fs1" class="fade-slider fade-in-slide-effect">
+                <header class="main-title-container">
+                    <div class="main-title">
+                        <span>Was verstehen Sie unter digitaler Transformation?<span></span><span id="hu-slide1" class="underline">_</span></span>
+                    </div>
+                </header>
+                <div id="bg1" class="bar"><span class="bar-label">Label</span><span class="bar-display" data-percentage="50">0%</span></div>
+                <div id="bg2" class="bar"><span class="bar-label">Label auch hier</span><span class="bar-display" data-percentage="70">0%</span></div>
+                <div id="bg3" class="bar"><span class="bar-label">Label eventuell</span><span class="bar-display" data-percentage="80">0%</span></div>
+                <div id="bg4" class="bar"><span class="bar-label">Label ok</span><span class="bar-display" data-percentage="50">0%</span></div>
+                <div id="bg5" class="bar"><span class="bar-label">Label lang sehr sehr lang alter es reicht</span><span class="bar-display" data-percentage="60">0%</span></div>
+                <div id="bg6" class="bar"><span class="bar-label">Label eher kurz</span><span class="bar-display" data-percentage="60">0%</span></div>
+
+                <button onclick="studyDataNewSlide('fs1','fs2','#3bba9c')">click</button>
+            </div>
+            <div id="fs2" class="fade-slider disabled">
+                <p>SOME MORE TEXT</p>
+                <button onclick="studyDataNewSlide('fs2','fs3','#2C323C')">click</button>
+            </div>
+            <div id="fs3" class="fade-slider disabled">
+                <p>EVEN MORE TEXT</p>
+                <div class="rectangle"></div>
+                <button onclick="studyDataNewSlide('fs3','fs4','#FFFFFF')">click</button>
+            </div>
+            <div id="fs4" class="fade-slider disabled">
+                <p>FINAL TEXT I SWEAR</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
