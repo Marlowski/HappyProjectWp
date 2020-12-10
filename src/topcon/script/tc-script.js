@@ -1,17 +1,51 @@
 $(document).ready(function () {
-    console.log("ini");
-    //make sure to start at the top
+
+    /* - question page - */
+    if(window.location.href.indexOf("index.html") > -1) {
+        console.log("question page initiated"); //debugging purpose
+        setTimeout(function () {
+            // ini sortable lists
+            $(function  () {
+                $("ol.sort-list").sortable();
+            });
+
+        }, 600); //600
+    }
+    /* - study-data page - */
+    else if(window.location.href.indexOf("study-data.html") > -1) {
+        console.log("study data page initiated"); //debugging purpose
+        setTimeout(function () {
+            // ini bar graphs for first slider ( i=1 since it starts with bg1 )
+            for(let i=1; i <= $('#slide-1 .bar').length; i++) {
+                setTimeout(function () {
+                    //add animation class and get specific percentage value
+                    let timeLimit = $('#bg'+ i +' .bar-display').addClass("bar-graph-effect").data("percentage");
+                    //call the percentage counter function
+                    numberCountUp('#bg'+i,timeLimit,1450);
+                    //delay each new bar longer than the previous one
+                }, 50+(i*100))
+            }
+
+            // set pyramid graph bg-colors (fade effect)
+            $('.pyramid-elem').each(function (index) {
+                let r = 49 + (index * 5);
+                let g = 55 + (index * 5);
+                let b = 65 + (index * 5);
+                let color = "rgb("+r+", "+g+","+b+")";
+                $(this).css('background-color', color);
+            });
+        }, 600); //600
+
+    } // /study data page ini
+
+
+    //make sure to start at the top after refresh
     $('html,body').scrollTop(0);
 
     //ini first slider
     orientationNav(1);
 
-    // ini sortable lists
-    $(function  () {
-        $("ol.sort-list").sortable();
-    });
-
-    //ini keyboard listener
+    //Eventhandler - Keyboard up / down clicked
     $(document).on('keydown', function(e) {
         switch(e.which) {
             // up
@@ -36,7 +70,7 @@ $(document).ready(function () {
         e.preventDefault(); // prevent the default action (scroll / move caret)
     });
 
-    // smooth scroll while overflow is permanently 'hidden'
+    // eventHanlder - smooth scroll while overflow is permanently 'hidden'
     $('a').click(function(){
         $('html, body').animate({
             scrollTop: $($(this).attr('href')).offset().top
@@ -44,17 +78,14 @@ $(document).ready(function () {
         return false;
     });
 
-    // ini bar graphs for first slider
-    for(let i=0; i <= $('#fs1 .bar').length; i++) {
-        setTimeout(function () {
-            //add animation class and get specific percentage value
-            let timeLimit = $('#bg'+ i +' .bar-display').addClass("bar-graph-effect").data("percentage");
-            //call the percentage counter function
-            numberCountUp('#bg'+i,timeLimit,1450);
-            //delay each new bar longer than the previous one
-        }, 650+(i*100))
-    }
-
+    // eventHandler for AFTER resize event -> scroll to current slider
+    $(window).bind('resizeEnd', function() {
+        let currentSlider = getCurrentSlider();
+        orientationNav(currentSlider);
+        $('html, body').animate({
+            scrollTop: $("#slide-" + currentSlider).offset().top
+        }, 0);
+    });
 
 }); //  ready function
 
@@ -68,7 +99,7 @@ const questions = [
 ];
 
 function writeTitle(titleNumber,selector,underlineSelector) {
-    //clear if page was visited already
+    //clear if page was visited already (text is already written)
     if($(selector).html() !== "") return;
     let typeWriter = new TypeWriter([questions[titleNumber-1]], selector, underlineSelector,false);
     setTimeout(typeWriter.typeWriter.bind(typeWriter),550);
@@ -91,7 +122,7 @@ function orientationNav(orderNumber) {
     });
 }
 
-//returns currently active slider
+//returns currently active slider number
 function getCurrentSlider() {
     return parseInt($('#orientation-nav-container').find('.or-nav-elem--active').attr('id').split('_')[1]);
 }
@@ -99,26 +130,6 @@ function getCurrentSlider() {
 //scroll function as <a> tag href replacment when key-up / down gets used
 function scrollToAnchor(selector) {
     $('html,body').animate({scrollTop: $(selector).offset().top},500);
-}
-
-function studyDataNewSlide(oldSlide,newSlide,color) {
-    //activate transition placeholder to scale over current content
-    $('#transition-placeholder').css('background-color',color).removeClass("disabled").addClass("square-scale-effect");
-    //delay for 'square-scale-effect's' duration plus a little margin
-    setTimeout(function () {
-        //hide old slider
-        $('#'+oldSlide).addClass("disabled");
-        //change slider background to new slider background color
-        $('#study-data-slide').css('background-color',color);
-        //put placeholder into the back to still have the new backgroundcolor but not block the fade in of the new slide
-        $('#transition-placeholder').css('z-index','-1');
-        //fade in new slide
-        $('#'+newSlide).removeClass("disabled").addClass("fade-in-slide-effect");
-        setTimeout(function () {
-            //after fade in disable placeholder again and but back into front for next use
-            $('#transition-placeholder').addClass("disabled").css('z-index','10');
-        },600);
-    },1400);
 }
 
 function numberCountUp(selector,limit, duration) {
@@ -151,9 +162,17 @@ function numberCountUp(selector,limit, duration) {
                 selectorElem.html(currentCount + "%");
             }
 
-            // If we’ve reached our last frame, stop the animation
+            // If we've reached our last frame, stop the animation
             if (frame === totalFrames) {
                 clearInterval(counter);
             }
         }, frameDuration);
 }
+
+//to fix wrong scroll placement after resize -> scroll to current slides anchor AFTER resizing
+$(window).resize(function() {
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+    this.resizeTO = setTimeout(function() {
+        $(this).trigger('resizeEnd');
+    }, 100);
+});

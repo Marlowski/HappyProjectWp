@@ -13,40 +13,78 @@
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <title>Title</title>
+    <title>Study data</title>
 </head>
 <body>
     <main>
-        <div class="slide" id="study-data-slide">
-            <div id="transition-placeholder" class="disabled"></div>
-            <div id="fs1" class="fade-slider fade-in-slide-effect">
-                <header class="main-title-container">
-                    <div class="main-title">
-                        <span>Was verstehen Sie unter digitaler Transformation?<span></span><span id="hu-slide1" class="underline">_</span></span>
-                    </div>
-                </header>
-                <div id="bg1" class="bar"><span class="bar-label">Label</span><span class="bar-display" data-percentage="50">0%</span></div>
-                <div id="bg2" class="bar"><span class="bar-label">Label auch hier</span><span class="bar-display" data-percentage="70">0%</span></div>
-                <div id="bg3" class="bar"><span class="bar-label">Label eventuell</span><span class="bar-display" data-percentage="80">0%</span></div>
-                <div id="bg4" class="bar"><span class="bar-label">Label ok</span><span class="bar-display" data-percentage="50">0%</span></div>
-                <div id="bg5" class="bar"><span class="bar-label">Label lang sehr sehr lang alter es reicht</span><span class="bar-display" data-percentage="60">0%</span></div>
-                <div id="bg6" class="bar"><span class="bar-label">Label eher kurz</span><span class="bar-display" data-percentage="60">0%</span></div>
+        <div id="slide-1" class="slide">
+            <header class="main-title-container">
+                <div class="main-title">
+                    <span>Was verstehen Sie unter digitaler Transformation?<span></span><span id="hu-slide1" class="underline">_</span></span>
+                </div>
+            </header>
+            <div id="bg1" class="bar"><span class="bar-label">Label</span><span class="bar-display" data-percentage="50">0%</span></div>
+            <div id="bg2" class="bar"><span class="bar-label">Label auch hier</span><span class="bar-display" data-percentage="70">0%</span></div>
+            <div id="bg3" class="bar"><span class="bar-label">Label eventuell</span><span class="bar-display" data-percentage="80">0%</span></div>
+            <div id="bg4" class="bar"><span class="bar-label">Label ok</span><span class="bar-display" data-percentage="50">0%</span></div>
+            <div id="bg5" class="bar"><span class="bar-label">Label lang sehr sehr lang alter es reicht</span><span class="bar-display" data-percentage="60">0%</span></div>
+            <div id="bg6" class="bar"><span class="bar-label">Label eher kurz</span><span class="bar-display" data-percentage="60">0%</span></div>
+            <a class="next-btn" href="#slide-2" onclick="orientationNav(2)">> Next <</a>
+        </div> <!-- /slide 1 -->
+        <div id="slide-2" class="slide">
+            <header class="main-title-container">
+                <div class="main-title">
+                    <span><span id="typewriterText2">Hemmnisse</span><span id="hu-slide2" class="underline">_</span></span>
+                </div>
+            </header>
+            <div class="pyramid-container">
+                <div class="pyramid-elem">50%</div>
+                <div class="pyramid-elem">33%</div>
+                <div class="pyramid-elem">62%</div>
+                <div class="pyramid-elem">88%</div>
+                <div class="pyramid-elem">24%</div>
+                <div class="pyramid-elem">15%</div>
+                <div class="pyramid-elem">8%</div>
+                <div class="pyramid-elem">36%</div>
+                <div class="pyramid-elem">43%</div>
+                <div class="pyramid-elem">77%</div>
+            </div>
+            <div class="pyramid-label-container">
+                <div class="pyramid-label-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</div>
+                <div class="pyramid-label-content">sed diam nonumy eirmod tempor invidunt ut labore</div>
+                <div class="pyramid-label-content">At vero eos et accusam et justo duo dolores et ea rebum.</div>
+                <div class="pyramid-label-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</div>
+                <div class="pyramid-label-content">Lno sea takimata sanctus est Lorem ipsum dolor sit amet</div>
+                <div class="pyramid-label-content">sed diam nonumy eirmod tempor invidunt ut labore</div>
+                <div class="pyramid-label-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</div>
+                <div class="pyramid-label-content">LAt vero eos et accusam et justo duo dolores et ea rebum.</div>
+                <div class="pyramid-label-content">no sea takimata sanctus est Lorem ipsum dolor sit amet</div>
+                <div class="pyramid-label-content">sed diam nonumy eirmod tempor invidunt ut labore</div>
 
-                <button onclick="studyDataNewSlide('fs1','fs2','#3bba9c')">click</button>
             </div>
-            <div id="fs2" class="fade-slider disabled">
-                <p>SOME MORE TEXT</p>
-                <button onclick="studyDataNewSlide('fs2','fs3','#2C323C')">click</button>
-            </div>
-            <div id="fs3" class="fade-slider disabled">
-                <p>EVEN MORE TEXT</p>
-                <div class="rectangle"></div>
-                <button onclick="studyDataNewSlide('fs3','fs4','#FFFFFF')">click</button>
-            </div>
-            <div id="fs4" class="fade-slider disabled">
-                <p>FINAL TEXT I SWEAR</p>
-            </div>
-        </div>
+            <a class="next-btn btn-light" href="#slide-3" onclick="orientationNav(3)">> Next <</a>
+        </div> <!-- /slide 2 -->
+        <div id="slide-3" class="slide">
+            <header class="main-title-container">
+                <div class="main-title">
+                    <span><span id="typewriterText3">slide3</span><span id="hu-slide3" class="underline">_</span></span>
+                </div>
+            </header>
+            <a class="next-btn" href="#slide-4" onclick="orientationNav(4)">> Next <</a>
+        </div> <!-- /slide 3 -->
+        <div id="slide-4" class="slide">
+            <header class="main-title-container">
+                <div class="main-title">
+                    <span><span id="typewriterText4">slide4</span><span id="hu-slide4" class="underline">_</span></span>
+                </div>
+            </header>
+        </div> <!-- /slide 4 -->
     </main>
+    <nav id="orientation-nav-container">
+        <a href="#slide-1" id="or-nav_1" onclick="orientationNav(1)" class="or-nav-elem"></a>
+        <a href="#slide-2" id="or-nav_2" onclick="orientationNav(2)" class="or-nav-elem"></a>
+        <a href="#slide-3" id="or-nav_3" onclick="orientationNav(3)" class="or-nav-elem"></a>
+        <a href="#slide-4" id="or-nav_4" onclick="orientationNav(4)" class="or-nav-elem"></a>
+    </nav>
 </body>
 </html>
