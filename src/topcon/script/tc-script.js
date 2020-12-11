@@ -70,7 +70,7 @@ $(document).ready(function () {
         e.preventDefault(); // prevent the default action (scroll / move caret)
     });
 
-    // eventHanlder - smooth scroll while overflow is permanently 'hidden'
+    // eventHandler - smooth scroll while overflow is permanently 'hidden'
     $('a').click(function(){
         $('html, body').animate({
             scrollTop: $($(this).attr('href')).offset().top
