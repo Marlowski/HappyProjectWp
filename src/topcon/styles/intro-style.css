@@ -31,9 +31,9 @@
     animation: glitch 5s 5s infinite;
 }
 .glitch::before {
-    content: 'HAPPYPROJECT';
+    content: '嬉しい事業';
     position: absolute;
-    left: -2px;
+    left: 15%;
     text-shadow: -5px 0 magenta;
     background: var(--thirdColor);
     overflow: hidden;
