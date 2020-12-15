@@ -43,6 +43,9 @@ main .slide:nth-child(2n) {
     background-color: var(--thirdColor);
     color: white;
 }
+#slide-3 {
+    justify-content: center;
+}
 
 /* - Slider orientation nav - */
 #orientation-nav-container {
@@ -345,12 +348,20 @@ ol li.placeholder:before {
         border-radius: 0;
     }
 }
-@keyframes bar-graph {
+@keyframes bar-graph-horizontal {
     0% {
-        width: 60px ;
+        width: 60px;
     }
     100% {
-        width: 100%
+        width: 100%;
+    }
+}
+@keyframes bar-graph-vertical {
+    0% {
+        height: 60px;
+    }
+    100% {
+        height: 100%;
     }
 }
 
@@ -366,8 +377,13 @@ ol li.placeholder:before {
     animation: square-scale 1.3s;
     animation-fill-mode: forwards;
 }
-.bar-graph-effect {
-    animation: bar-graph 1.2s;
+.bar-graph-horizontal-effect {
+    animation: bar-graph-horizontal 1.2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+.bar-graph-vertical-effect {
+    animation: bar-graph-vertical 1.2s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
 }
@@ -405,6 +421,12 @@ ol li.placeholder:before {
     margin-bottom: 35px;
 }
 /* bar graph */
+.horizontal-bar-graph {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 .bar {
     display: flex;
     flex-flow: row nowrap;
@@ -435,19 +457,53 @@ ol li.placeholder:before {
     justify-content: flex-end;
     align-items: center;
 }
-#bg1,#bg4 {
+#bg11, #bg14 {
     width: 50vw;
 }
-#bg2 {
+#bg12 {
     width: 70vw;
 }
-#bg3 {
+#bg13 {
     width: 80vw;
 }
-#bg5, #bg6 {
+#bg15, #bg16 {
     width: 60vw;
 }
 
+.vertical-bar-graph {
+    display: flex;
+    flex: 0 1 65%;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    justify-content: center;
+}
+.vertical-bar-graph .bar {
+    justify-content: center;
+    align-items: flex-end;
+}
+.vertical-bar-graph .bar-display {
+    height: 30px;
+    left: auto;
+    padding: 20px 0 0 0;
+    justify-content: center;
+    align-items: flex-start;
+}
+.vertical-bar-graph .bar-label {
+    border-radius: 0;
+}
+/* percentage / 1,35 = vh */
+#bg31, #bg34 {
+    height: calc(50vh / 1.35);
+}
+#bg32 {
+    height: calc(70vh / 1.35);
+}
+#bg33 {
+    height: calc(80vh / 1.35);
+}
+#bg35, #bg36 {
+    height: calc(60vh / 1.35);
+}
 /* - pyramid graph */
 .pyramid-container {
     display: flex;
@@ -532,5 +588,11 @@ ol li.placeholder:before {
     }
     #slide-6 .sort-container {
         top: 42%;
+    }
+}
+
+@media only screen and (max-height: 970px) {
+    .vertical-bar-graph {
+        flex: 1 1 90%;
     }
 }

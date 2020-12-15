@@ -14,28 +14,17 @@ $(document).ready(function () {
     /* - study-data page - */
     else if(window.location.href.indexOf("study-data.html") > -1) {
         console.log("study data page initiated"); //debugging purpose
-        setTimeout(function () {
-            // ini bar graphs for first slider ( i=1 since it starts with bg1 )
-            for(let i=1; i <= $('#slide-1 .bar').length; i++) {
-                setTimeout(function () {
-                    //add animation class and get specific percentage value
-                    let timeLimit = $('#bg'+ i +' .bar-display').addClass("bar-graph-effect").data("percentage");
-                    //call the percentage counter function
-                    numberCountUp('#bg'+i,timeLimit,1450);
-                    //delay each new bar longer than the previous one
-                }, 50+(i*100))
-            }
+        //save that current page is study-data page
+        studyDataVisited[0] = true;
 
-            // set pyramid graph bg-colors (fade effect)
-            $('.pyramid-elem').each(function (index) {
-                let r = 49 + (index * 5);
-                let g = 55 + (index * 5);
-                let b = 65 + (index * 5);
-                let color = "rgb("+r+", "+g+","+b+")";
-                $(this).css('background-color', color);
-            });
-        }, 600); //600
-
+        // set pyramid graph bg-colors (fade effect)
+        $('.pyramid-elem').each(function (index) {
+            let r = 49 + (index * 5);
+            let g = 55 + (index * 5);
+            let b = 65 + (index * 5);
+            let color = "rgb("+r+", "+g+","+b+")";
+            $(this).css('background-color', color);
+        });
     } // /study data page ini
 
 
@@ -98,6 +87,9 @@ const questions = [
     "What measures should the digital unit implement immediately?",
 ];
 
+// [0] current page = study-data, [1-n] study-data page sliders
+let studyDataVisited = [false, false, false, false, false];
+
 function writeTitle(titleNumber,selector,underlineSelector) {
     //clear if page was visited already (text is already written)
     if($(selector).html() !== "") return;
@@ -112,6 +104,16 @@ function orientationNav(orderNumber) {
     } else {
         $('#or-nav_'+ orderNumber).addClass('or-nav-elem--active');
         writeTitle(orderNumber,'#typewriterText'+orderNumber,'#hu-slide'+orderNumber);
+        //ini current study-data slider graph animation
+        if(studyDataVisited[0] && !studyDataVisited[orderNumber]) {
+            studyDataVisited[orderNumber] = true;
+            //check if slider contains a bar graph
+            if(orderNumber === 1) {
+                barGraphAnimation(orderNumber, "bar-graph-horizontal-effect");
+            } else if(orderNumber === 3) {
+                barGraphAnimation(orderNumber, "bar-graph-vertical-effect");
+            }
+        }
     }
     //remove all actives from the rest of the nav
     $(".or-nav-elem").each(function() {
@@ -168,6 +170,22 @@ function numberCountUp(selector,limit, duration) {
             }
         }, frameDuration);
 }
+
+function barGraphAnimation(slideIndex,animation) {
+    setTimeout(function () {
+        // ini bar graphs for given slide index range:(1-n)
+        for(let i=1; i <= $('#bar-graph-'+ slideIndex +' .bar').length; i++) {
+            setTimeout(function () {
+                //add animation class and get specific percentage value
+                let timeLimit = $('#bg'+ slideIndex+i +' .bar-display').addClass(animation).data("percentage");
+                //call the percentage counter function
+                numberCountUp('#bg'+ slideIndex+i,timeLimit,1450);
+                //delay each new bar longer than the previous one
+            }, 50+(i*100))
+        }
+    }, 600); //600
+}
+
 
 //to fix wrong scroll placement after resize -> scroll to current slides anchor AFTER resizing
 $(window).resize(function() {
