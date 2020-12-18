@@ -12,6 +12,15 @@
     align-items: center;
     font-family: 'Roboto', sans-serif;
 }
+#intro-title-container {
+    display: flex;
+    flex-flow: row nowrap;
+    color: #FFFFFF;
+}
+#intro-title-container h1 {
+    font-size: 8.5vw;
+    position: relative;
+}
 #start-btn {
     padding: 12px 30px;
     text-align: center;
@@ -23,29 +32,43 @@
     bottom: 10%;
     cursor: pointer;
 }
-
-.glitch {
-    color: #fff;
+#logoPow {
     position: relative;
-    font-size: 8.5vw;
+    font-size: 6vw;
+    margin-top: -1.7vw;
+}
+#intro-title-container h1::before {
+    content: 'TOPCON';
+    position: absolute;
+    left: 0;
+    text-shadow: -.3vw 0 var(--firstColor);
+    white-space: nowrap;
+    background: var(--thirdColor);
+    overflow: hidden;
+    top: 0;
+    animation: glitch 5s 5.05s infinite;
+}
+.glitch {
+    position: relative;
     animation: glitch 5s 5s infinite;
 }
 .glitch::before {
-    content: '嬉しい事業';
-    letter-spacing: 30px;
+    content: 'X';
     position: absolute;
-    left: 6%;
-    text-shadow: -5px 0 magenta;
+    left: 1%;
+    text-shadow: -.3vw 0 magenta;
+    white-space: nowrap;
     background: var(--thirdColor);
     overflow: hidden;
     top: 0;
     animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
 }
 .glitch::after {
-    content: 'HAPPYPROJECT';
+    content: 'X';
     position: absolute;
-    left: 0px;
-    text-shadow: -5px 0 #3bba9c;
+    left: 0;
+    white-space: nowrap;
+    text-shadow: -.3vw 0 #3bba9c;
     background: var(--thirdColor);
     overflow: hidden;
     top: 0;

@@ -25,6 +25,8 @@ $(document).ready(function () {
             let color = "rgb("+r+", "+g+","+b+")";
             $(this).css('background-color', color);
         });
+        //ini bar graph bars width depending on regarding percentage
+        iniBarGraph('#bar-graph-1');
     } // /study data page ini
 
 
@@ -144,7 +146,7 @@ function numberCountUp(selector,limit, duration) {
     // An ease-out function that slows the count as it progresses
     const easeOutQuad = t => t * (2 - t);
     //selector
-    let selectorElem = $(selector +' .bar-display');
+    let selectorElem = selector;
 
     // The animation function, which takes an Element
         let frame = 0;
@@ -172,20 +174,28 @@ function numberCountUp(selector,limit, duration) {
 }
 
 function barGraphAnimation(slideIndex,animation) {
+    //basic delay after function call
     setTimeout(function () {
-        // ini bar graphs for given slide index range:(1-n)
-        for(let i=1; i <= $('#bar-graph-'+ slideIndex +' .bar').length; i++) {
+        //add animation class to each bar elem
+        $('#bar-graph-'+ slideIndex +' .bar-display').each(function (index) {
+            //bind current elem to timeout function
+            let object = $(this);
+            //increase delay of animation & countUp for each following bar
             setTimeout(function () {
-                //add animation class and get specific percentage value
-                let timeLimit = $('#bg'+ slideIndex+i +' .bar-display').addClass(animation).data("percentage");
-                //call the percentage counter function
-                numberCountUp('#bg'+ slideIndex+i,timeLimit,1450);
-                //delay each new bar longer than the previous one
-            }, 50+(i*100))
-        }
+                let timeLimit = object.addClass(animation).data("percentage");
+                numberCountUp(object, timeLimit, 1450);
+                }, 50 + (index * 100),object)
+        });
     }, 600); //600
 }
 
+function iniBarGraph(selector) {
+    $(selector + ' .bar-elem').each(function (index) {
+        //calculate length: percentage-value * crunch-value(0.7) + min-value(10)
+        $(this).css('width', ($($(selector + ' .bar-display')[index]).data("percentage"))*0.7+10+'vw');
+    });
+
+}
 
 //to fix wrong scroll placement after resize -> scroll to current slides anchor AFTER resizing
 $(window).resize(function() {
