@@ -41,9 +41,19 @@ a:visited {
     overflow: hidden;
     align-content: flex-start;
 }
+/* general / question slider */
 main .slide:nth-child(2n) {
     background-color: var(--thirdColor);
     color: white;
+}
+/* study data slider */
+#study-data-slide .slide:nth-child(2n+1) {
+    background-color: var(--thirdColor);
+    color: #FFFFFF;
+}
+#study-data-slide .slide:nth-child(2n) {
+    background-color: #FFFFFF;
+    color: #000000;
 }
 
 /* - Slider orientation nav - */
@@ -393,6 +403,33 @@ body.dragging, body.dragging * {
 .disabled {
     display: none !important;
 }
+
+/* study intro slide */
+#study-data-slide #slide-1 {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+#study-data-slide #slide-1 h1 {
+    font-size: 5.5vw;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 3%;
+}
+.subtitle {
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 1vw;
+    color: var(--firstColor);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    margin: 5px 0;
+}
+#study-data-slide #slide-1 .subtitle:first-of-type {
+    margin-bottom: 15px;
+}
+
 /* - bar graph - */
 .horizontal-bar-graph {
     display: flex;
@@ -490,16 +527,16 @@ body.dragging, body.dragging * {
     border-radius: 0;
 }
 /* percentage / 1,35 = vh */
-#bg31, #bg34 {
+#bg41, #bg44 {
     height: calc(50vh / 1.35);
 }
-#bg32 {
+#bg42 {
     height: calc(70vh / 1.35);
 }
-#bg33 {
+#bg43 {
     height: calc(80vh / 1.35);
 }
-#bg35, #bg36 {
+#bg45, #bg46 {
     height: calc(60vh / 1.35);
 }
 /* - pyramid graph */
@@ -538,7 +575,8 @@ body.dragging, body.dragging * {
     height: 75%;
     margin-left: -20%;
 }
- #study-data-slide #slide-2 .main-title span, #study-data-slide #slide-2 .underline {
+/* pyramid graph slide adjustment */
+ #study-data-slide #slide-3 .main-title span, #study-data-slide #slide-3 .underline {
     font-size: 3vw;
     line-height: 4vw;
 }

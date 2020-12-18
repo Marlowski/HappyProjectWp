@@ -26,7 +26,7 @@ $(document).ready(function () {
             $(this).css('background-color', color);
         });
         //ini bar graph bars width depending on regarding percentage
-        iniBarGraph('#bar-graph-1');
+        iniBarGraph('#bar-graph-2','width');
     } // /study data page ini
 
 
@@ -50,7 +50,8 @@ $(document).ready(function () {
             // down
             case 40:
                 let csDown = getCurrentSlider();
-                if(csDown+1 < 7) {
+                //get amount of sliders to not go Oob
+                if(csDown+1 <= $('.slide').length) {
                     orientationNav(csDown+1);
                     scrollToAnchor('#slide-'+(csDown+1));
                 }
@@ -90,7 +91,7 @@ const questions = [
 ];
 
 // [0] current page = study-data, [1-n] study-data page sliders
-let studyDataVisited = [false, false, false, false, false];
+let studyDataVisited = [false, false, false, false, false, false];
 
 function writeTitle(titleNumber,selector,underlineSelector) {
     //clear if page was visited already (text is already written)
@@ -110,9 +111,9 @@ function orientationNav(orderNumber) {
         if(studyDataVisited[0] && !studyDataVisited[orderNumber]) {
             studyDataVisited[orderNumber] = true;
             //check if slider contains a bar graph
-            if(orderNumber === 1) {
+            if(orderNumber === 2) {
                 barGraphAnimation(orderNumber, "bar-graph-horizontal-effect");
-            } else if(orderNumber === 3) {
+            } else if(orderNumber === 4) {
                 barGraphAnimation(orderNumber, "bar-graph-vertical-effect");
             }
         }
@@ -189,12 +190,11 @@ function barGraphAnimation(slideIndex,animation) {
     }, 600); //600
 }
 
-function iniBarGraph(selector) {
+function iniBarGraph(selector,orientation,crunch=0.7, min=10) {
     $(selector + ' .bar-elem').each(function (index) {
         //calculate length: percentage-value * crunch-value(0.7) + min-value(10)
-        $(this).css('width', ($($(selector + ' .bar-display')[index]).data("percentage"))*0.7+10+'vw');
+        $(this).css(orientation, $($(selector + ' .bar-display')[index]).data("percentage")*crunch+min+'vw');
     });
-
 }
 
 //to fix wrong scroll placement after resize -> scroll to current slides anchor AFTER resizing
