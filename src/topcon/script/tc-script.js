@@ -27,6 +27,7 @@ $(document).ready(function () {
         });
         //ini bar graph bars width depending on regarding percentage
         iniBarGraph('#bar-graph-2','width');
+        iniBarGraph('#bar-graph-4','height',0.3);
     } // /study data page ini
 
 
@@ -74,9 +75,7 @@ $(document).ready(function () {
     $(window).bind('resizeEnd', function() {
         let currentSlider = getCurrentSlider();
         orientationNav(currentSlider);
-        $('html, body').animate({
-            scrollTop: $("#slide-" + currentSlider).offset().top
-        }, 0);
+        $('html, body').scrollTop($("#slide-" + currentSlider).offset().top);
     });
 
 }); //  ready function
@@ -111,9 +110,9 @@ function orientationNav(orderNumber) {
         if(studyDataVisited[0] && !studyDataVisited[orderNumber]) {
             studyDataVisited[orderNumber] = true;
             //check if slider contains a bar graph
-            if(orderNumber === 2) {
+            if($('#slide-'+orderNumber).find(".horizontal-bar-graph").length > 0) {
                 barGraphAnimation(orderNumber, "bar-graph-horizontal-effect");
-            } else if(orderNumber === 4) {
+            } else if($('#slide-'+orderNumber).find(".vertical-bar-graph").length > 0) {
                 barGraphAnimation(orderNumber, "bar-graph-vertical-effect");
             }
         }
@@ -178,16 +177,24 @@ function barGraphAnimation(slideIndex,animation) {
     //basic delay after function call
     setTimeout(function () {
         //add animation class to each bar elem
-        $('#bar-graph-'+ slideIndex +' .bar-display').each(function (index) {
+        let selector;
+        // check which kind of bar graph the object is
+        if(animation === "bar-graph-horizontal-effect") {
+            selector = ".horizontal-bar-graph";
+        } else if(animation === "bar-graph-vertical-effect") {
+            selector = ".vertical-bar-graph";
+            } else return;
+
+        $('#slide-'+ slideIndex).find(selector +' .bar-display').each(function (index) {
             //bind current elem to timeout function
             let object = $(this);
             //increase delay of animation & countUp for each following bar
             setTimeout(function () {
                 let timeLimit = object.addClass(animation).data("percentage");
                 numberCountUp(object, timeLimit, 1450);
-                }, 50 + (index * 100),object)
+                }, 50 + (index * 100),object);
         });
-    }, 600); //600
+    }, 600);
 }
 
 function iniBarGraph(selector,orientation,crunch=0.7, min=10) {

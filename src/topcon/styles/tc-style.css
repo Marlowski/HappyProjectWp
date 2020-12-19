@@ -367,7 +367,7 @@ body.dragging, body.dragging * {
 }
 @keyframes bar-graph-vertical {
     0% {
-        height: 60px;
+        height: 0;
     }
     100% {
         height: 100%;
@@ -515,29 +515,40 @@ body.dragging, body.dragging * {
 .vertical-bar-graph .bar {
     justify-content: center;
     align-items: flex-end;
+    flex-flow: column nowrap;
 }
 .vertical-bar-graph .bar-display {
-    height: 30px;
-    left: auto;
+    width: 4vw;
+    height: 0;
     padding: 20px 0 0 0;
     justify-content: center;
     align-items: flex-start;
+    border-radius: 50px 50px 0 0;
+    max-height: none;
+    max-width: 65px;
+    margin-bottom: -2vw;
 }
 .vertical-bar-graph .bar-label {
     border-radius: 0;
+    width: 11vw;
+    height: 4.5vw;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
 }
-/* percentage / 1,35 = vh */
-#bg41, #bg44 {
-    height: calc(50vh / 1.35);
+.vertical-bar-graph .bar-line-container {
+    width: 100%;
+    margin: 0;
+    flex-flow: row nowrap;
+    min-height: 24vw;
+    align-items: flex-end;
 }
-#bg42 {
-    height: calc(70vh / 1.35);
+.vertical-bar-graph .bar-elem {
+    display: flex;
+    align-items: flex-end;
 }
-#bg43 {
-    height: calc(80vh / 1.35);
-}
-#bg45, #bg46 {
-    height: calc(60vh / 1.35);
+.vertical-bar-graph .bar-line-container .bar-elem .bar-display {
+    background-color: var(--firstColor);
 }
 /* - pyramid graph */
 .pyramid-container {
@@ -575,8 +586,9 @@ body.dragging, body.dragging * {
     height: 75%;
     margin-left: -20%;
 }
-/* pyramid graph slide adjustment */
- #study-data-slide #slide-3 .main-title span, #study-data-slide #slide-3 .underline {
+/* pyramid graph + vertical bar graph slide adjustment */
+ #study-data-slide #slide-3 .main-title span, #study-data-slide #slide-3 .underline,
+ #study-data-slide #slide-4 .main-title span, #study-data-slide #slide-4 .underline {
     font-size: 3vw;
     line-height: 4vw;
 }
@@ -619,12 +631,15 @@ body.dragging, body.dragging * {
         font-size: 5.5vw;
         line-height: 5.7vw;
     }
+    /* question slide */
     .sort-container {
         top: 55%;
     }
+    /* question slide */
     #slide-4 .sort-container {
         top: 68%;
     }
+    /* question slide */
     #slide-6 .sort-container {
         top: 42%;
     }
@@ -633,5 +648,9 @@ body.dragging, body.dragging * {
 @media only screen and (max-height: 970px) {
     .vertical-bar-graph {
         flex: 1 1 90%;
+        height: 65%;
+    }
+    .vertical-bar-graph .bar-label {
+        width: 13vw;
     }
 }
