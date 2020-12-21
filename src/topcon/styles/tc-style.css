@@ -9,7 +9,7 @@
     --firstColor: #3bba9c;
     --secondColor: #00031f;
     --thirdColor: #2C323C;
-    --fourthColor: #c103a2;
+    --barSecondColor: #454b55;
 }
 
 html, body {
@@ -28,6 +28,17 @@ a {
 }
 a:visited {
     color: inherit;
+}
+#watermark {
+    position: fixed;
+    right: 25px;
+    bottom: -10px;
+    color: #6f6f6f;
+    font-size: 1.35vw;
+}
+#watermark span {
+    color: var(--firstColor);
+    font-family: Arial, serif;
 }
 
 .slide {
@@ -429,7 +440,30 @@ body.dragging, body.dragging * {
 #study-data-slide #slide-1 .subtitle:first-of-type {
     margin-bottom: 15px;
 }
-
+/* inside slide seperator */
+.slide-seperator-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-flow: row nowrap;
+    align-items: stretch;
+}
+.slide-seperator-elem {
+    padding: 0 15px;
+    flex: 1 1 33%;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: stretch;
+}
+#study-data-slide .slide-seperator-elem .main-title span, #study-data-slide .slide-seperator-elem .underline {
+    font-size: 2vw;
+    line-height: 2.8vw;
+    text-align: center;
+}
+.slide-seperator-elem .bar-label {
+    width: 10vw;
+    height: 5.5vw;
+}
 /* - bar graph - */
 .horizontal-bar-graph {
     display: flex;
@@ -437,6 +471,7 @@ body.dragging, body.dragging * {
     flex-flow: column nowrap;
     justify-content: flex-start;
     flex: 1 1 100%;
+    margin-top: 2vw;
 }
 .bar {
     display: flex;
@@ -446,6 +481,7 @@ body.dragging, body.dragging * {
     position: relative;
     color: white;
     font-size: 1.2vw;
+    margin: 2px 0;
 }
 .bar h2 {
     font-size: 1.2vw;
@@ -460,6 +496,9 @@ body.dragging, body.dragging * {
     height: 7.5vw;
     min-height: 100%;
     width: 22vw;
+}
+.light-bg {
+    background-color: var(--barSecondColor);
 }
 .bar-display {
     display: flex;
@@ -488,8 +527,8 @@ body.dragging, body.dragging * {
 .horizontal-bar-graph .bar:last-child .bar-line-container {
     margin-bottom: 0;
 }
-.bar-line-container .bar-elem:last-child .bar-display {
-    background-color: var(--fourthColor);
+.bar-line-container .bar-elem:nth-child(2) .bar-display {
+    background-color: var(--barSecondColor);
 }
 .hz-graph-legend {
     position: absolute;
@@ -499,7 +538,7 @@ body.dragging, body.dragging * {
     font-size: 2rem;
 }
 .hz-graph-legend span:first-of-type {
-    color: var(--fourthColor);
+    color: var(--barSecondColor);
 }
 .hz-graph-legend span:last-of-type {
     color: var(--firstColor);
@@ -586,11 +625,41 @@ body.dragging, body.dragging * {
     height: 75%;
     margin-left: -20%;
 }
-/* pyramid graph + vertical bar graph slide adjustment */
- #study-data-slide #slide-3 .main-title span, #study-data-slide #slide-3 .underline,
- #study-data-slide #slide-4 .main-title span, #study-data-slide #slide-4 .underline {
+/* study data slides title size */
+#study-data-slide  .main-title span, #study-data-slide .underline {
     font-size: 3vw;
     line-height: 4vw;
+}
+#study-data-slide #bar-graph-5 .bar-label {
+    height: 4.5vw;
+    width: 57vw;
+}
+#slide-6 .slide-seperator-elem .bar-label {
+    width: 17vw;
+}
+#study-data-slide #slide-6 .slide-seperator-elem .main-title span, #study-data-slide #slide-6 .slide-seperator-elem .underline {
+    font-size: 3vw;
+    line-height: 4vw;
+}
+#study-data-slide #slide-8 .horizontal-bar-graph {
+    margin-top: -12vw;
+}
+#study-data-slide #slide-8 .slide-seperator-elem .bar-label {
+    height: 7.5vw;
+}
+#study-data-slide #slide-8 .slide-seperator-elem {
+    flex-flow: column nowrap;
+}
+#study-data-slide #bar-graph-8-1 h2 {
+    line-height: 16px;
+}
+#study-data-slide #slide-8 .hz-graph-legend {
+    right: 2%;
+    bottom: 13%;
+    font-size: 2vw;
+}
+#study-data-slide #slide-9 .bar-label {
+    height: 4vw;
 }
 /* - media querys - */
 @media only screen and (max-width: 579px) {
@@ -620,6 +689,31 @@ body.dragging, body.dragging * {
     }
     .sort-list {
         width: 60%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .slide-seperator-elem .main-title-container {
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .slide-seperator-elem {
+        padding: 0 5px;
+    }
+    #study-data-slide #slide-5 .main-title-container {
+        margin-bottom: 0;
+    }
+    #study-data-slide #slide-5 .main-title span, #study-data-slide #slide-5 .underline {
+        font-size: 2vw;
+        line-height: 3vw;
+    }
+    #slide-8 .horizontal-bar-graph {
+        margin-top: 0;
+    }
+    #slide-8 .hz-graph-legend {
+        bottom: 0;
     }
 }
 

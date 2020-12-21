@@ -28,6 +28,15 @@ $(document).ready(function () {
         //ini bar graph bars width depending on regarding percentage
         iniBarGraph('#bar-graph-2','width');
         iniBarGraph('#bar-graph-4','height',0.3);
+        iniBarGraph('#bar-graph-3-1', 'width',0.2 ,6.5);
+        iniBarGraph('#bar-graph-3-2', 'width',0.2 ,6.5);
+        iniBarGraph('#bar-graph-3-3', 'width',0.2 ,6.5);
+        iniBarGraph('#bar-graph-5', 'width',0.5,7);
+        iniBarGraph('#bar-graph-6-1','width',0.3, 6.5);
+        iniBarGraph('#bar-graph-6-2','width',0.3, 6.5);
+        iniBarGraph('#bar-graph-8-1','width',0.35,6.5);
+        iniBarGraph('#bar-graph-8-2','width',0.35,6.5);
+        iniBarGraph('#bar-graph-9','width');
     } // /study data page ini
 
 
@@ -92,10 +101,12 @@ const questions = [
 // [0] current page = study-data, [1-n] study-data page sliders
 let studyDataVisited = [false, false, false, false, false, false];
 
-function writeTitle(titleNumber,selector,underlineSelector) {
-    //clear if page was visited already (text is already written)
-    if($(selector).html() !== "") return;
-    let typeWriter = new TypeWriter([questions[titleNumber-1]], selector, underlineSelector,false);
+function writeTitle(slideIndex) {
+    let headerSelector = $('#slide-'+ slideIndex).find('.headline');
+    //return if page was visited already (text is already written)
+    if(headerSelector.text().length > 0) return;
+    let underlineSelector = $('#slide-'+ slideIndex).find('.underline');
+    let typeWriter = new TypeWriter([questions[slideIndex-1]], headerSelector, underlineSelector,false);
     setTimeout(typeWriter.typeWriter.bind(typeWriter),550);
 }
 
@@ -105,7 +116,7 @@ function orientationNav(orderNumber) {
         return;
     } else {
         $('#or-nav_'+ orderNumber).addClass('or-nav-elem--active');
-        writeTitle(orderNumber,'#typewriterText'+orderNumber,'#hu-slide'+orderNumber);
+        writeTitle(orderNumber);
         //ini current study-data slider graph animation
         if(studyDataVisited[0] && !studyDataVisited[orderNumber]) {
             studyDataVisited[orderNumber] = true;
