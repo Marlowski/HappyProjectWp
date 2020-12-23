@@ -1,0 +1,152 @@
+/* -- main -- */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 1em;
+    font-family: 'Inconsolata', monospace;
+    --firstColor: #3bba9c;
+    --secondColor: #00031f;
+    --thirdColor: #2C323C;
+    --barSecondColor: #454b55;
+}
+
+html, body {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+h1, h2, h3, p, span {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+a:visited {
+    color: inherit;
+}
+#watermark {
+    position: fixed;
+    right: 25px;
+    bottom: -10px;
+    color: #6f6f6f;
+    font-size: 1.35vw;
+}
+#watermark span {
+    color: var(--firstColor);
+    font-family: Arial, serif;
+}
+
+/* - circle - */
+#circle-container {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    flex-flow: row wrap;
+    background-color: white;
+    color: black;
+    padding: 50px;
+    overflow: hidden;
+    align-content: center;
+    justify-content: center;
+}
+.circle {
+    display: flex;
+    position: relative;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin: 0 0.3vw;
+    width: 45%;
+    height: 38.5vw;
+}
+.circle-elem {
+    padding: 9.2vw;
+    position: absolute;
+    background-color: var(--firstColor);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.circle.left .circle-elem {
+    right: 0;
+}
+.circle.right .circle-elem {
+    left: 0;
+}
+.circle.left .circle-elem:nth-child(1) {
+    bottom: 20vw;
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+.circle.left .circle-elem:nth-child(2) {
+    bottom: 10vw;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+}
+.circle.left .circle-elem:nth-child(3) {
+    bottom: 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+.circle.right .circle-elem:nth-child(1) {
+    bottom: 20vw;
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+.circle.right .circle-elem:nth-child(2) {
+    bottom: 10vw;
+    clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+.circle.right .circle-elem:nth-child(3) {
+    bottom: 0;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+}
+.filler {
+    position: absolute;
+    clip-path: circle(50% at 50% 50%);
+    background-color: white;
+    width: 21vw;
+    height: 21vw;
+    left: -11vw;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    align-items: center;
+    z-index: 10;
+}
+.filler h2 {
+    color: #000000;
+    font-size: 3.35vw;
+    margin-right: -1vw;
+}
+.filler span {
+    color: var(--firstColor);
+    font-family: Arial, serif;
+}
+.filler code {
+    font-size: 1.2vw;
+    color: var(--firstColor);
+}
+.circle.left .filler {
+    left: auto;
+    right: -10.6vw;
+}
+
+
+/* - layer windows - */
+.content-window {
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: flex-start;
+    height: 100%;
+    width: 69%;
+    background: #3bba9c;
+    top: 0;
+    right: -70%;
+    opacity: 1;
+    padding: 25px;
+}
+
+.frame-active {
+    z-index: 20;
+}

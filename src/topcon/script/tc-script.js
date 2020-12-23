@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     /* - question page - */
-    if(window.location.href.indexOf("index.html") > -1) {
+    if(window.location.href.indexOf("questions.html") > -1) {
         console.log("question page initiated"); //debugging purpose
         setTimeout(function () {
             // ini sortable lists

@@ -5,138 +5,25 @@
     <meta name="author" content="Marlon Kerth">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    <link href="styles/intro-style.css" rel="stylesheet">
     <link href="styles/tc-style.css" rel="stylesheet">
     <link rel="icon" href="../assets/tcx-icon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="script/js-sortable.js"></script>
-    <script src="script/tc-script.js"></script>
-    <script src="../script/typeWriter.js"></script>
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <title>Topconˣ | Questions</title>
+    <title>Topconˣ | Welcome</title>
 </head>
 <body>
     <main>
-        <div id="slide-1" class="slide">
-            <header class="main-title-container">
-                <div class="main-title">
-                    <span><span class="headline"></span><span class="underline">_</span></span>
-                </div>
-            </header>
-            <div class="sort-container">
-                <p>Sort from top [most] to bottom [least]</p>
-                <ol class='sort-list'>
-                    <li>Big Data</li>
-                    <li>platform economy</li>
-                    <li>artificial intelligence</li>
-                </ol>
+        <div id="intro-slider" class="slide">
+            <div id="intro-title-container">
+                <h1>TOPCON</h1>
+                <span class="glitch" id="logoPow">x</span>
             </div>
-            <a class="next-btn" href="#slide-2" onclick="orientationNav(2)">> Next <</a>
-        </div> <!-- /slide 1 -->
-        <div id="slide-2" class="slide">
-            <header class="main-title-container">
-                <div class="main-title">
-                    <span><span class="headline"></span><span class="underline">_</span></span>
-                </div>
-            </header>
-            <div class="sort-container">
-                <form class="yn-radio-form">
-                <div class="form-container">
-                    <input id="sl2-rd1" name="radio" type="radio"/>
-                    <label for="sl2-rd1">Yes</label>
-                </div>
-                <div class="form-container">
-                    <input id="sl2-rd2" name="radio" type="radio"/>
-                    <label for="sl2-rd2">No</label>
-                </div>
-                </form>
-            </div>
-            <a class="next-btn btn-light" href="#slide-3" onclick="orientationNav(3)">> Next <</a>
-        </div> <!-- /slide 2 -->
-        <div id="slide-3" class="slide">
-            <header class="main-title-container">
-                <div class="main-title">
-                    <span><span class="headline"></span><span class="underline">_</span></span>
-                </div>
-            </header>
-            <div class="sort-container">
-                <p>multiple selection possible</p>
-                <form class="checkbox-form">
-                    <div class="form-container">
-                        <input id="sl3-cb1" name="checkbox" type="checkbox"/>
-                        <label for="sl3-cb1">Digitization of existing business models</label>
-                    </div>
-                    <div class="form-container">
-                        <input id="sl3-cb2" name="checkbox" type="checkbox"/>
-                        <label for="sl3-cb2">Development of new business models</label>
-                    </div>
-                </form>
-            </div>
-            <a class="next-btn" href="#slide-4" onclick="orientationNav(4)">> Next <</a>
-        </div> <!-- /slide 3 -->
-        <div id="slide-4" class="slide">
-            <header class="main-title-container">
-                <div class="main-title">
-                    <span><span class="headline"></span><span class="underline">_</span></span>
-                </div>
-            </header>
-            <div class="sort-container">
-                <form class="yn-radio-form">
-                    <div class="form-container">
-                        <input id="sl4-rd1" name="radio" type="radio"/>
-                        <label for="sl4-rd1">Yes</label>
-                    </div>
-                    <div class="form-container">
-                        <input id="sl4-rd2" name="radio" type="radio"/>
-                        <label for="sl4-rd2">No</label>
-                    </div>
-                </form>
-            </div>
-            <a class="next-btn btn-light" href="#slide-5" onclick="orientationNav(5)">> Next <</a>
-        </div> <!-- /slide 4 -->
-        <div id="slide-5" class="slide">
-            <header class="main-title-container">
-                <div class="main-title">
-                    <span><span class="headline"></span><span class="underline">_</span></span>
-                </div>
-            </header>
-            <div class="sort-container">
-                <p>Sort from top [highest] to bottom [lowest]</p>
-                <ol class='sort-list'>
-                    <li>StartUps</li>
-                    <li>Tech companies</li>
-                    <li>Competitors from your own industry</li>
-                </ol>
-            </div>
-            <a class="next-btn" href="#slide-6" onclick="orientationNav(6)">> Next <</a>
-        </div> <!-- /slide 5 -->
-        <div id="slide-6" class="slide">
-            <header class="main-title-container">
-                <div class="main-title">
-                    <span><span class="headline"></span><span class="underline">_</span></span>
-                </div>
-            </header>
-            <div class="sort-container">
-                <p>Sort from top [most important] to bottom [least important]</p>
-                <ol class='sort-list sl-light'>
-                    <li>Customer journey</li>
-                    <li>B2B platform</li>
-                    <li>E-commerce concept</li>
-                    <li>Sustainability</li>
-                </ol>
-            </div>
-            <a class="next-btn btn-light" href="study-data.html">> Finish <</a>
-        </div> <!-- /slide 6 -->
+            <p class="subtitle">Willkommen﹒Welcome﹒迎え</p>
+            <a href="questions.html" id="start-btn">Start</a>
+        </div>
     </main>
-    <nav id="orientation-nav-container">
-        <a href="#slide-1" id="or-nav_1" onclick="orientationNav(1)" class="or-nav-elem"></a>
-        <a href="#slide-2" id="or-nav_2" onclick="orientationNav(2)" class="or-nav-elem"></a>
-        <a href="#slide-3" id="or-nav_3" onclick="orientationNav(3)" class="or-nav-elem"></a>
-        <a href="#slide-4" id="or-nav_4" onclick="orientationNav(4)" class="or-nav-elem"></a>
-        <a href="#slide-5" id="or-nav_5" onclick="orientationNav(5)" class="or-nav-elem"></a>
-        <a href="#slide-6" id="or-nav_6" onclick="orientationNav(6)" class="or-nav-elem"></a>
-    </nav>
-    <h5 id="watermark">Topcon<span>ˣ</span></h5>
 </body>
 </html>
