@@ -26,16 +26,33 @@ $(document).ready(function () {
             $(this).css('background-color', color);
         });
         //ini bar graph bars width depending on regarding percentage
+        if(window.matchMedia("(max-width: 579px)").matches) {
+            iniBarGraph('#bar-graph-3-1', 'width',0.5 ,18);
+            iniBarGraph('#bar-graph-3-2', 'width',0.5 ,18);
+            iniBarGraph('#bar-graph-3-3', 'width',0.5 ,18);
+
+            iniBarGraph('#bar-graph-6-1','width',0.4, 26);
+            iniBarGraph('#bar-graph-6-2','width',0.4, 26);
+
+            iniBarGraph('#bar-graph-4','height',2);
+
+            iniBarGraph('#bar-graph-8-1','width',0.3,26);
+            iniBarGraph('#bar-graph-8-2','width',0.3,26);
+        } else {
+            iniBarGraph('#bar-graph-3-1', 'width',0.2 ,6.5);
+            iniBarGraph('#bar-graph-3-2', 'width',0.2 ,6.5);
+            iniBarGraph('#bar-graph-3-3', 'width',0.2 ,6.5);
+
+            iniBarGraph('#bar-graph-6-1','width',0.3, 6.5);
+            iniBarGraph('#bar-graph-6-2','width',0.3, 6.5);
+
+            iniBarGraph('#bar-graph-4','height',0.3);
+
+            iniBarGraph('#bar-graph-8-1','width',0.35,6.5);
+            iniBarGraph('#bar-graph-8-2','width',0.35,6.5);
+        }
         iniBarGraph('#bar-graph-2','width');
-        iniBarGraph('#bar-graph-4','height',0.3);
-        iniBarGraph('#bar-graph-3-1', 'width',0.2 ,6.5);
-        iniBarGraph('#bar-graph-3-2', 'width',0.2 ,6.5);
-        iniBarGraph('#bar-graph-3-3', 'width',0.2 ,6.5);
         iniBarGraph('#bar-graph-5', 'width',0.5,7);
-        iniBarGraph('#bar-graph-6-1','width',0.3, 6.5);
-        iniBarGraph('#bar-graph-6-2','width',0.3, 6.5);
-        iniBarGraph('#bar-graph-8-1','width',0.35,6.5);
-        iniBarGraph('#bar-graph-8-2','width',0.35,6.5);
         iniBarGraph('#bar-graph-9','width');
     } // /study data page ini
 

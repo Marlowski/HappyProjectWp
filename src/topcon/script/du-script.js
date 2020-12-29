@@ -52,6 +52,14 @@ function transformCircleSize() {
         $('.right .filler').animate({left: '-6.9vw', width: '12vw', height: '12vw'}, 400, 'swing');
         $('.left .filler').animate({right: '-5.7vw', width: '12vw', height: '12vw'}, 400, 'swing');
         $('.filler h2').animate({fontSize: '2.5vw'}, 400, 'swing');
+
+        //tagline
+        if(!window.matchMedia("(max-width: 800px)").matches) {
+            $('#circle-container h4').animate({fontSize: '0.75vw'}, 400, 'swing');
+        } else {
+            $('#circle-container h4').animate({fontSize: '1.75vw',marginTop: '3px'}, 400, 'swing');
+        }
+
     }, 150)
 }
 
@@ -62,17 +70,30 @@ function toggleContentWindow() {
     let active = $('body').find('.frame-active');
     if(active.length > 0) {
         active.removeClass('frame-active');
-        active.delay(1100).animate({right: '-69%'}, 0);
+        if(!window.matchMedia("(max-width: 800px)").matches) {
+            active.delay(1100).animate({right: '-69%'}, 0);
+        } else {
+            active.delay(1100).animate({right: '-100%'}, 0);
+        }
+
     } else firstClick = true;
 
     //show new frame by gettings the active elems id number and combine this with to get the proper content frame by his id
     let idNumber = $('#circle-container').find('.active-circle');
     let selector = $('#content-'+ idNumber.attr('id').split('-')[1]);
     selector.addClass('frame-active');
-    //check for first click instance
+    //check for first click instance and move circle to the right if so
     if(firstClick) {
-        $('#circle-container').animate({marginLeft: '-69%'}, 500, 'swing');
+        if(!window.matchMedia("(max-width: 800px)").matches) {
+            console.log(">800");
+            $('#circle-container').animate({marginLeft: '-69%'}, 500, 'swing');
+        } else {
+            console.log("<800");
+            $('#circle-container').css({"align-content": "flex-start"});
+        }
     }
+
+    //show fitting content slide
     setTimeout(function () {
         selector.animate({right: 0}, 700, 'swing');
     },300);

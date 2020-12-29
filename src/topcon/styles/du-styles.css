@@ -144,9 +144,38 @@ a:visited {
     top: 0;
     right: -70%;
     opacity: 1;
-    padding: 25px;
 }
 
 .frame-active {
     z-index: 20;
+}
+
+#circle-container h4 {
+    color: var(--thirdColor);
+    font-size: 1.2vw;
+    font-weight: 300;
+}
+
+#circle-title-1 {
+    position: absolute;
+    top: 33%;
+    font-size: 1.5vw;
+    transform: rotate(-27deg);
+    left: 41%;
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+@media only screen and (max-width: 800px) {
+    .content-window {
+        top: auto;
+        bottom: 0;
+        height: 65%;
+        width: 100%;
+        right: -100%;
+    }
 }
