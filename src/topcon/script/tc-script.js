@@ -83,6 +83,10 @@ $(document).ready(function () {
                     scrollToAnchor('#slide-'+(csDown+1));
                 }
                 break;
+                //tab wiggle focus
+            case 9:
+                void(0);
+                break;
 
             default: return; // exit this handler for other keys
         }
