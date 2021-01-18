@@ -572,8 +572,8 @@ video {
 .pp-buy-rent-container:hover {
     border-color: var(--SokkiaColor);
 }
-.slider-product-info .pp-buy-rent-container:last-of-type {
-    margin-top: 15px;
+.slider-product-info .pp-buy-rent-container {
+    margin-bottom: 15px;
 }
 #slider-container .pp-price-wrapper p {
     font-size: 1.1rem;
@@ -585,7 +585,24 @@ video {
     font-weight: 400;
     font-size: 1.2rem;
 }
-
+.disclaimer, #pp-info-container .disclaimer {
+    text-align: left;
+    line-height: 30px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.info-text, #pp-info-container .info-text {
+    text-align: left;
+    line-height: 30px;
+    font-size: 1.2rem;
+    color: var(--SokkiaColor);
+    font-weight: 400;
+}
+#pp-info-container .info-text b {
+    font-weight: 500;
+}
 
 /* - media querys - */
 @media only screen and (max-width: 620px) {
