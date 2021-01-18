@@ -384,6 +384,7 @@ video {
     align-items: stretch;
     height: 100%;
     width: 100%;
+    margin-bottom: -100px;
 }
 .slider-product-info {
     flex: 1 1 40%;
@@ -391,18 +392,22 @@ video {
     color: #FFFFFF;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    padding-top: 75px;
+    justify-content: center;
     padding-left: 12%;
     margin-right: -10%;
     z-index: 2;
 }
+#slider-product-wrapper .slider-product-info {
+    max-width: 40%;
+}
 #slider-product-img {
     flex: 1 1 400px;
-    background: url("../../assets/sokkia-flipped.png") no-repeat top;
+    background: url("../../assets/sokkia-flipped.png") no-repeat center;
     background-size: cover;
-    margin-bottom: -100px;
-
+    min-height: 650px;
+    max-height: 650px;
+    max-width: 900px;
+    margin: auto 0;
 }
 #slider-container .slider-elem:nth-child(5) {
     background: #000000;
@@ -415,13 +420,12 @@ video {
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
     margin-top: 20px;
-    font-size: 3rem;
-    padding: 0 20%;
-    line-height: 50px;
+    font-size: 5rem;
+    padding: 0 10%;
+    line-height: 80px;
 }
 #sokkia-logo {
     width: 150px;
-    margin-top: -25px;
 }
 #slider-container .slider-elem:nth-child(5) a {
     color: var(--SokkiaColor);
@@ -529,20 +533,32 @@ video {
     display: flex;
     width: 100%;
     height: 100%;
+    margin-top: 40px;
     flex-flow: row wrap;
     justify-content: center;
     align-content: stretch;
 }
+#pp-banner-br-container {
+    border: none;
+    margin-left: -10vw;
+    width: 100vw;
+    padding: 7px 7vw;
+    font-weight: 500;
+    background: var(--SokkiaColor);
+}
 #pp-image {
     flex: 1 1 400px;
-    background: url("../../assets/sokkia-product-classic.jpg") no-repeat center;
+    background: url("../../assets/sokkia-product-phone.png") no-repeat center;
     background-size: contain;
     max-width: 800px;
+    min-height: 500px;
+    max-height: 500px;
+    margin: auto 0;
 }
 #pp-info-container {
     flex: 1 1 356px;
-    padding: 0 50px;
     margin: auto 0;
+    padding: 0 50px;
     max-width: 480px;
 }
 #pp-info-container .slider-product-info {
@@ -568,6 +584,7 @@ video {
     align-items: center;
     padding: 0 15px;
     height: 70px;
+    width: 100%;
 }
 .pp-buy-rent-container:hover {
     border-color: var(--SokkiaColor);
@@ -585,7 +602,7 @@ video {
     font-weight: 400;
     font-size: 1.2rem;
 }
-.disclaimer, #pp-info-container .disclaimer {
+.disclaimer {
     text-align: left;
     line-height: 30px;
     font-size: 1.2rem;
@@ -593,14 +610,14 @@ video {
     margin-bottom: 15px;
     margin-top: 10px;
 }
-.info-text, #pp-info-container .info-text {
+.info-text {
     text-align: left;
     line-height: 30px;
     font-size: 1.2rem;
     color: var(--SokkiaColor);
     font-weight: 400;
 }
-#pp-info-container .info-text b {
+.info-text b {
     font-weight: 500;
 }
 
@@ -647,7 +664,7 @@ video {
     #slider-compound-title span:nth-child(3), #slider-compound-title span:nth-child(4), #slider-compound-title span:nth-child(5) {
         line-height: 50px;
     }
-    #slider-product-info {
+    .slider-product-info {
         order: 2;
         margin-top: -50px;
         flex: 1 1 100%;
@@ -655,8 +672,14 @@ video {
         margin-right: 0;
         align-items: center;
     }
-    #slider-product-info h2 {
+    .slider-product-info h2 {
         text-align: center;
+    }
+    #slider-product-wrapper {
+        margin-bottom: 0;
+    }
+    #slider-product-wrapper .slider-product-info {
+        max-width: 100%;
     }
     #slider-product-img {
         order: 1;
@@ -664,7 +687,9 @@ video {
         padding-bottom: 450px;
     }
     #slider-product-title {
-        padding: 0 8%;
+        padding: 0 4%;
+        font-size: 4rem;
+        line-height: 70px;
     }
     #slider-buy-rent-container {
         width: 300px;
@@ -672,23 +697,34 @@ video {
     .slider-buy-rent-wrapper {
         align-items: center;
     }
+    .slider-buy-rent-container {
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    #pp-banner-br-container {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 944px) {
     #pp-image {
         margin: 50px 0;
         height: 40%;
+        min-height: 400px;
     }
     #pp-info-container {
         margin: 0;
     }
-    #pp-content-wrapper .slider-product-info {
-        margin-bottom: 150px;
+    #pp-content-wrapper {
+        height: auto;
+        margin-top: 0;
     }
 }
 
 @media only screen and (min-width: 801px) and (max-width: 970px) {
-    #slider-product-info {
+    .slider-product-info {
         padding-left: 5%;
         margin-right: -15%;
     }
