@@ -78,7 +78,7 @@ function transformCircleSize() {
         $('.circle-title-class').each(function () {
             $(this).animate({fontSize: '.75vw'}, 400, 'swing');
         });
-        $('#circle-title-4').css({'top': '25%', 'left': '-19%', 'line-height': '1vw'});
+        $('#circle-title-4').css({'top': '31%', 'left': '8%', 'line-height': '1vw'});
         $('#circle-title-5').css({'top': '36%', 'left': '30%', 'width': '100%', 'line-height': '0.8vw'});
         $('#circle-title-6').css({'top': '49%', 'left': '8%'});
 
