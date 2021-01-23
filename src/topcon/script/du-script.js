@@ -1,23 +1,22 @@
+// circle settings [regular[top],active[top]]
+const circleSettings = [[0,'-2.1vw'],['10vw','8.9vw'],['19.9vw','19.9vw'],[0,'-2.1vw'],['10vw','8.9vw'],['19.9vw','19.9vw']];
+
 $(document).ready(function () {
     $('.circle-elem').on( "click", function() {
-        //one elem already got clicked
+        //check if clicked elem is already activ
+        if($(this).hasClass('active-circle')) return;
+        //animation - turn active back to regular if exist
         if($('#circle-container').find('.active-circle').length > 0) {
-            //the clicked elem is the active one
-            if($(this).hasClass('active-circle')) return;
-            //turn active back to regular
             let active = $('.active-circle');
-            active.animate({backgroundColor: '#3bba9c', padding: '3vw', top:circleSettings[active.attr('id').split('-')[1]-1][0]}, 400, 'swing');
+            active.animate({backgroundColor: '#3bba9c', padding: '9.2vw', top:circleSettings[active.attr('id').split('-')[1]-1][0]}, 300, 'swing');
             active.removeClass('active-circle');
-            //add active to new elem
-            $(this).animate({backgroundColor: '#2C323C', padding: '4vw', top:circleSettings[$(this).attr('id').split('-')[1]-1][1]}, 400, 'swing');
-            $(this).addClass('active-circle');
-
-            //first click instance
-        } else {
-            $(this).addClass('active-circle');
-            transformCircleSize();
         }
+        //animation - add active to new elem
+        $(this).animate({backgroundColor: '#2C323C', padding: '10.3vw', top:circleSettings[$(this).attr('id').split('-')[1]-1][1]}, 300, 'swing');
+        $(this).addClass('active-circle');
+
         toggleContentWindow();
+        markNavMenuElem();
     });
 
     //prevent tab switch focus
@@ -29,91 +28,59 @@ $(document).ready(function () {
     });
 
     //ini sliders
-    iniSlider();
+    iniSlider("#content-4");
+    iniSlider("#content-6");
 
     //ini nav Button
     iniNavButton();
+
+    //move margin nav menu when resized
+    $(window).bind('resize', function() {
+        if(window.matchMedia("(max-width: 400px)").matches) {
+            if($('#navigation-toggle').css('margin-left') !== '0px') {
+                let marginleftValue = '-100vw';
+                $('#navigation-toggle').css('marginLeft', marginleftValue);
+            }
+        } else if(window.matchMedia("(max-width: 800px)").matches) {
+            if($('#navigation-toggle').css('margin-left') !== '0px') {
+                let marginleftValue = '-55vw';
+                $('#navigation-toggle').css('marginLeft', marginleftValue);
+            }
+        }
+    });
 });
 
-// circle settings [regular[bottom],active[bottom]]
-const circleSettings = [[0,'-2.1vw'],['3.5vw','2.5vw'],['7vw','7vw'],[0,'-2.1vw'],['3.5vw','2.5vw'],['7vw','7vw']];
-
-
-function transformCircleSize() {
-    setTimeout(function () {
-        $('.circle-elem').each(function () {
-            //all circle elems
-            if($(this).attr('id') === 'circle-2' || $(this).attr('id') === 'circle-5') {
-                $(this).animate({padding: '3vw', top: '3.5vw'}, 400, 'swing');
-                //check if active
-                if($(this).hasClass('active-circle')) $(this).animate({top: '2.5vw', padding: '4vw', backgroundColor: '#2C323C'}, 400, 'swing');
-            } else if($(this).attr('id') === 'circle-1' || $(this).attr('id') === 'circle-4') {
-                $(this).animate({padding: '3vw'}, 400, 'swing');
-                //check if active
-                if($(this).hasClass('active-circle')) $(this).delay(350).animate({top: '-2.1vw', padding: '4vw', backgroundColor: '#2C323C'}, 400, 'swing');
-            } else {
-                $(this).animate({padding: '3vw', top: '7vw'}, 400, 'swing');
-                //check if active
-                if($(this).hasClass('active-circle')) $(this).delay(350).animate({top: '7vw', padding: '4vw', backgroundColor: '#2C323C'}, 400, 'swing');
-            }
-        });
-
-        //circle container
-        $('.circle').each(function () {
-            $(this).animate({height: '13vw', width: '7vw'}, 400, 'swing');
-        });
-        //center circle
-        $('.left .filler').animate({right: '-3.7vw', top: '3vw', width: '7vw', height: '7vw'}, 400, 'swing');
-        $('.filler h2').animate({fontSize: '1.4vw', marginRight: '0px'}, 400, 'swing');
-        $('.filler code').animate({fontSize: '0.7vw'}, 400, 'swing');
-
-        //tagline
-        if(!window.matchMedia("(max-width: 800px)").matches) {
-            $('#circle-container h4').animate({fontSize: '0.75vw'}, 400, 'swing');
-        } else {
-            $('#circle-container h4').animate({fontSize: '0.75vw',marginTop: '3px'}, 400, 'swing');
-        }
-        $('#circle-container h4').html('click on one of the circle elements<br/>to get further information');
-        //elem titles
-        $('.circle-title-class').each(function () {
-            $(this).animate({fontSize: '.75vw'}, 400, 'swing');
-        });
-        $('#circle-title-4').css({'top': '31%', 'left': '8%', 'line-height': '1vw'});
-        $('#circle-title-5').css({'top': '36%', 'left': '30%', 'width': '100%', 'line-height': '0.8vw'});
-        $('#circle-title-6').css({'top': '49%', 'left': '8%'});
-
-    }, 150)
-}
 
 // show specified content window
-function toggleContentWindow() {
-    let firstClick = false;
-    //remove old frame if existing
+let firstClick = true;
+function toggleContentWindow(specificSelectorId = null) {
+    //if specficSelectorId = current frame, return
+    if(specificSelectorId !== null && specificSelectorId.toString() === $('.frame-active').attr('id').split('-')[1]) return;
+
+    //remove current activ frame
     let active = $('body').find('.frame-active');
-    if(active.length > 0) {
-        //stop video playing if window gets changed
-        $('.frame-active').find('video').each(function () {
-            $(this).trigger('pause');
-        });
-        active.removeClass('frame-active');
-        active.delay(1100).animate({right: '-100%'}, 0);
-    } else firstClick = true;
+    //stop video playing if window gets changed
+    $('.frame-active').find('video').each(function () {
+        $(this).trigger('pause');
+    });
+    active.removeClass('frame-active');
+    active.delay(1100).animate({right: '-100%'}, 0);
 
     //show new frame by gettings the active elems id number and combine this with to get the proper content frame by his id
-    let idNumber = $('#circle-container').find('.active-circle');
-    let selector = $('#content-'+ idNumber.attr('id').split('-')[1]);
+    let selector;
+    if(specificSelectorId === null) {
+        let idNumber = $('#circle-container').find('.active-circle');
+        selector = $('#content-'+ idNumber.attr('id').split('-')[1]);
+    } else {
+        selector = $('#content-'+specificSelectorId);
+    }
     selector.addClass('frame-active');
     //check for first click instance and move circle to the right if so
     if(firstClick) {
-        $('#circle-container').animate({marginLeft: '-83%', paddingTop: '110px'}, 500, 'swing');
-        //show nav toggle button (menu open)
-        setTimeout(function () {
-            $('#navigation-toggle').animate({opacity: 1, paddingLeft: '20%'}, 400, 'swing');
-        },450);
-        //trigger eventListener to close menu after being shown for some seconds
-        setTimeout(function () {
-            $('#navigation-toggle').trigger('click');
-        },1900);
+        firstClick = false;
+        //show burger menu toggle icon
+        $('#navigator-menu-icon').animate({opacity: 1}, 400, 'swing');
+        $('.nav-menu-icon').trigger('click');
     }
 
     //show fitting content slide
@@ -123,43 +90,43 @@ function toggleContentWindow() {
 
 }
 
-function iniSlider() {
-    $('#slider-container').find('.slider-elem').each(function (index) {
+function iniSlider(parentSelector) {
+    $(parentSelector + ' .slider-container').find('.slider-elem').each(function (index) {
         $(this).css({'left': 100*index + 'vw'});
     });
 
     let runningRight = false;
-    $('.slider-right').on('click', function () {
+    $(parentSelector + ' .slider-right').on('click', function () {
         if(runningRight === false) {
             runningRight = true;
 
         let currActiveIndex = undefined;
         let newActive = undefined;
         //get current & new active slide | range for index: 2 - n | range for nth-child: 3 - n
-        $('.slider-elem').each(function () {
+        $(parentSelector + ' .slider-elem').each(function () {
             if($(this).hasClass('active-slide')) {
                 currActiveIndex = $(this).index();
 
                 //stop slide if trying to go OOB
-                if(currActiveIndex >= ($('.slider-elem').length+1)) {
+                if(currActiveIndex >= ($(parentSelector + ' .slider-elem').length+1)) {
                     return;
                 }
                 //if moving in the opposit direction from a dead end, set button free again
                 if(currActiveIndex === 2) {
-                    $('.slider-left').removeClass('slider-nav-limit');
+                    $(parentSelector + ' .slider-left').removeClass('slider-nav-limit');
                 }
                 //change right-nav button if last slide is reached
-                if(currActiveIndex >= ($('.slider-elem').length)) {
-                    $('.slider-right').addClass('slider-nav-limit');
+                if(currActiveIndex >= ($(parentSelector + ' .slider-elem').length)) {
+                    $(parentSelector + ' .slider-right').addClass('slider-nav-limit');
                 }
-                newActive = $('#slider-container .slider-elem:nth-child('+ (currActiveIndex+2) +')');
+                newActive = $(parentSelector + ' .slider-container .slider-elem:nth-child('+ (currActiveIndex+2) +')');
             }
         });
 
         //set new and old active slide class
         if(newActive !== undefined) {
             //set new left values
-            $('.slider-elem').each(function () {
+            $(parentSelector + ' .slider-elem').each(function () {
                 //get current left value, transform to a number and subtract 100vw to change current slider by 1
                 let value = parseInt($(this).css('left'),10);
                 //change from px value to vw value
@@ -167,7 +134,7 @@ function iniSlider() {
                 $(this).animate({'left': value + 'vw'}, 400, 'swing');
             });
 
-            $('#slider-container .slider-elem:nth-child('+ (currActiveIndex+1) +')').removeClass('active-slide');
+            $(parentSelector + ' .slider-container .slider-elem:nth-child('+ (currActiveIndex+1) +')').removeClass('active-slide');
             newActive.addClass('active-slide');
         }
 
@@ -178,7 +145,7 @@ function iniSlider() {
     }); //right nav eventListener
 
     let runningLeft = false;
-    $('.slider-left').on('click', function () {
+    $(parentSelector + ' .slider-left').on('click', function () {
         let currActiveIndex = undefined;
         let newActive = undefined;
 
@@ -186,7 +153,7 @@ function iniSlider() {
             runningLeft = true;
 
         //get current & new active slide | range for index: 2 - n | range for nth-child: 3 - n
-        $('.slider-elem').each(function () {
+        $(parentSelector + ' .slider-elem').each(function () {
             if($(this).hasClass('active-slide')) {
                 currActiveIndex = $(this).index();
                 //stop slide if trying to go OOB
@@ -195,13 +162,13 @@ function iniSlider() {
                 }
                 if(currActiveIndex-1 === 2) {
                     //change left nav-button if last slide is reached
-                    $('.slider-left').addClass('slider-nav-limit');
+                    $(parentSelector + ' .slider-left').addClass('slider-nav-limit');
                 }
                 //if moving in the opposit direction from a dead end, set button free again
-                if(currActiveIndex === $('.slider-elem').length+1) {
-                    $('.slider-right').removeClass('slider-nav-limit');
+                if(currActiveIndex === $(parentSelector + ' .slider-elem').length+1) {
+                    $(parentSelector + ' .slider-right').removeClass('slider-nav-limit');
                 }
-                newActive = $('#slider-container .slider-elem:nth-child('+ (currActiveIndex) +')');
+                newActive = $(parentSelector + ' .slider-container .slider-elem:nth-child('+ (currActiveIndex) +')');
             }
 
             if(newActive !== undefined) {
@@ -211,7 +178,7 @@ function iniSlider() {
         //set new and old active slide class
         if(newActive !== undefined) {
             //set new left values
-            $('.slider-elem').each(function () {
+            $(parentSelector + ' .slider-elem').each(function () {
                 //get current left value, transform to a number and subtract 100vw to change current slider by 1
                 let value = parseInt($(this).css('left'),10);
                 //change from px value to vw value
@@ -219,7 +186,7 @@ function iniSlider() {
                 $(this).animate({'left': value + 'vw'}, 400, 'swing');
             });
 
-            $('#slider-container .slider-elem:nth-child('+ (currActiveIndex+1) +')').removeClass('active-slide');
+            $(parentSelector + ' .slider-container .slider-elem:nth-child('+ (currActiveIndex+1) +')').removeClass('active-slide');
             newActive.addClass('active-slide');
         }
 
@@ -231,25 +198,54 @@ function iniSlider() {
 
     //add right-nav trigger to S3 'ideas' button
     $('#slider-ideas-btn').on('click', function () {
-        $('.slider-right').trigger('click');
+        $('#content-4 .slider-right').trigger('click');
     });
 }
 
 function iniNavButton() {
-    let toggle = true;
-    $('#navigation-toggle').on('click',function () {
+    let toggle = true; //false: closed | true: open
+    $('.nav-menu-icon').on('click',function () {
         //show nav
         if(toggle === false) {
             toggle = true;
-            $('#circle-container').animate({marginLeft: '-83%'}, 500, 'swing');
-            $('#navigation-toggle').animate({paddingLeft: '20%'}, 500, 'swing').html('<');
+            $('#navigation-toggle').animate({marginLeft: '0'}, 500, 'swing');
         } else {
             //hide nav
            toggle = false;
-            $('#circle-container').animate({marginLeft: '-120%'}, 500, 'swing');
-            $('#navigation-toggle').animate({paddingLeft: '15px'}, 500, 'swing').html('>');
+           let marginleftValue = '-22vw';
+            if(window.matchMedia("(max-width: 400px)").matches) {
+                marginleftValue = '-100vw';
+            } else if(window.matchMedia("(max-width: 800px)").matches) {
+                marginleftValue = '-55vw';
+            }
+           $('#navigation-toggle').animate({marginLeft: marginleftValue}, 500, 'swing');
         }
     });
 }
 
-//if(!window.matchMedia("(max-width: 800px)").matches) {
+function triggerNavMenu(selectorId) {
+    //homescreen #content-0 nav button got clicked. since there is no circle element for this slider, it cant be called
+    //with an external trigger click
+    if(selectorId === 0 && $('.active-circle').length > 0) {
+        toggleContentWindow(selectorId);
+        //remove active circle css
+        let selector = $('.active-circle');
+        selector.animate({backgroundColor: '#3bba9c', padding: '9.2vw', top:circleSettings[selector.attr('id').split('-')[1]-1][0]}, 300, 'swing');
+        selector.removeClass('active-circle');
+        //add active list elem to Home tab in menu
+        $('.active-menu-li').removeClass('active-menu-li');
+        $('#nav-menu-li-0').addClass('active-menu-li');
+    } else {
+        $('#circle-'+selectorId).trigger('click');
+    }
+    //close nav after click, if on phone size
+    if(window.matchMedia("(max-width: 400px)").matches) {
+        $('#navigator-menu-icon').trigger('click');
+    }
+}
+
+function markNavMenuElem() {
+    $('.active-menu-li').removeClass('active-menu-li');
+    let value = $('.active-circle').attr('id').split('-')[1];
+    $('#nav-menu-li-' + value).addClass('active-menu-li');
+}
