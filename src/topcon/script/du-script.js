@@ -1,5 +1,6 @@
 // circle settings [regular[top],active[top]]
 const circleSettings = [[0,'-2.1vw'],['10vw','8.9vw'],['19.9vw','19.9vw'],[0,'-2.1vw'],['10vw','8.9vw'],['19.9vw','19.9vw']];
+const circleSettingsMobil = [[0,'-4vw'],['16vw','14vw'],['32vw','31.7vw'],[0,'-4vw'],['16vw','14vw'],['32vw','31.7vw']];
 
 $(document).ready(function () {
     $('.circle-elem').on( "click", function() {
@@ -8,11 +9,19 @@ $(document).ready(function () {
         //animation - turn active back to regular if exist
         if($('#circle-container').find('.active-circle').length > 0) {
             let active = $('.active-circle');
-            active.animate({backgroundColor: '#3bba9c', padding: '9.2vw', top:circleSettings[active.attr('id').split('-')[1]-1][0]}, 300, 'swing');
+            if(window.matchMedia("(max-width: 800px)").matches) {
+                active.animate({backgroundColor: '#3bba9c', padding: '15vw', top:circleSettingsMobil[active.attr('id').split('-')[1]-1][0]}, 300, 'swing');
+            } else {
+                active.animate({backgroundColor: '#3bba9c', padding: '9.2vw', top:circleSettings[active.attr('id').split('-')[1]-1][0]}, 300, 'swing');
+            }
             active.removeClass('active-circle');
         }
         //animation - add active to new elem
-        $(this).animate({backgroundColor: '#2C323C', padding: '10.3vw', top:circleSettings[$(this).attr('id').split('-')[1]-1][1]}, 300, 'swing');
+        if(window.matchMedia("(max-width: 800px)").matches) {
+            $(this).animate({backgroundColor: '#2C323C', padding: '17vw', top:circleSettingsMobil[$(this).attr('id').split('-')[1]-1][1]}, 300, 'swing');
+        } else {
+            $(this).animate({backgroundColor: '#2C323C', padding: '10.3vw', top:circleSettings[$(this).attr('id').split('-')[1]-1][1]}, 300, 'swing');
+        }
         $(this).addClass('active-circle');
 
         toggleContentWindow();
@@ -34,13 +43,18 @@ $(document).ready(function () {
     //ini nav Button
     iniNavButton();
 
+    //call once to prevent top bar to hide behind safari top bar -> get called on resize aswell
+    if(window.matchMedia("(max-width: 500px)").matches) $('main').css('height', window.innerHeight + "px");
+
     //move margin nav menu when resized
     $(window).bind('resize', function() {
-        if(window.matchMedia("(max-width: 400px)").matches) {
+        if(window.matchMedia("(max-width: 500px)").matches) {
             if($('#navigation-toggle').css('margin-left') !== '0px') {
                 let marginleftValue = '-100vw';
                 $('#navigation-toggle').css('marginLeft', marginleftValue);
             }
+            //to prevent top bar to hide behind safari top bar
+            $('main').css('height', window.innerHeight + "px");
         } else if(window.matchMedia("(max-width: 800px)").matches) {
             if($('#navigation-toggle').css('margin-left') !== '0px') {
                 let marginleftValue = '-55vw';
@@ -213,7 +227,7 @@ function iniNavButton() {
             //hide nav
            toggle = false;
            let marginleftValue = '-22vw';
-            if(window.matchMedia("(max-width: 400px)").matches) {
+            if(window.matchMedia("(max-width: 500px)").matches) {
                 marginleftValue = '-100vw';
             } else if(window.matchMedia("(max-width: 800px)").matches) {
                 marginleftValue = '-55vw';
@@ -230,7 +244,11 @@ function triggerNavMenu(selectorId) {
         toggleContentWindow(selectorId);
         //remove active circle css
         let selector = $('.active-circle');
-        selector.animate({backgroundColor: '#3bba9c', padding: '9.2vw', top:circleSettings[selector.attr('id').split('-')[1]-1][0]}, 300, 'swing');
+        if(window.matchMedia("(max-width: 800px)").matches) {
+            selector.animate({backgroundColor: '#3bba9c', padding: '15vw', top:circleSettingsMobil[selector.attr('id').split('-')[1]-1][0]}, 300, 'swing');
+        } else {
+            selector.animate({backgroundColor: '#3bba9c', padding: '9.2vw', top:circleSettings[selector.attr('id').split('-')[1]-1][0]}, 300, 'swing');
+        }
         selector.removeClass('active-circle');
         //add active list elem to Home tab in menu
         $('.active-menu-li').removeClass('active-menu-li');
@@ -239,7 +257,7 @@ function triggerNavMenu(selectorId) {
         $('#circle-'+selectorId).trigger('click');
     }
     //close nav after click, if on phone size
-    if(window.matchMedia("(max-width: 400px)").matches) {
+    if(window.matchMedia("(max-width: 500px)").matches) {
         $('#navigator-menu-icon').trigger('click');
     }
 }

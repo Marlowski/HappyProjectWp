@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     /* - question page - */
     if(window.location.href.indexOf("questions.html") > -1) {
         console.log("question page initiated"); //debugging purpose
@@ -34,7 +33,7 @@ $(document).ready(function () {
             iniBarGraph('#bar-graph-6-1','width',0.4, 26);
             iniBarGraph('#bar-graph-6-2','width',0.4, 26);
 
-            iniBarGraph('#bar-graph-4','height',2);
+            iniBarGraph('#bar-graph-4','height',1.5);
 
             iniBarGraph('#bar-graph-8-1','width',0.3,26);
             iniBarGraph('#bar-graph-8-2','width',0.3,26);
@@ -93,6 +92,21 @@ $(document).ready(function () {
         e.preventDefault(); // prevent the default action (scroll / move caret)
     });
 
+    //prevent mobile zoom
+    document.addEventListener('touchmove', function (e) {
+        if (e.scale !== 1) { e.preventDefault(); }
+    }, {passive: false});
+
+    //prevet double tap
+    let doubleTouchStartTimestamp = 0;
+    $(document).bind("touchstart", function(event){
+        let now = +(new Date());
+        if (doubleTouchStartTimestamp + 500 > now){
+            event.preventDefault();
+        };
+        doubleTouchStartTimestamp = now;
+    });
+
     // eventHandler - smooth scroll while overflow is permanently 'hidden'
     $('a').click(function(){
         $('html, body').animate({
@@ -111,12 +125,12 @@ $(document).ready(function () {
 }); //  ready function
 
 const questions = [
-    "Which technologies will most influence your business model in the future?",
+    "Which technologies will influence your business model in the future?",
     "We can keep our sales for the next 3 years without digitization measures.",
     "What is more important?",
-    "The qualifications of our employees are sufficient for the changes brought about by the digital transformation. Do you agree with the claim?",
+    "The qualification of our employees is sufficient for the changes brought by the digital transformation. Do you agree?",
     "What are your strongest competitive threats?",
-    "What measures should the digital unit implement immediately?",
+    "What measures should the digital unit address immediately?",
 ];
 
 // [0] current page = study-data, [1-n] study-data page sliders
@@ -126,6 +140,11 @@ function writeTitle(slideIndex) {
     let headerSelector = $('#slide-'+ slideIndex).find('.headline');
     //return if page was visited already (text is already written)
     if(headerSelector.text().length > 0) return;
+    //if phone size just paste text
+    if(window.matchMedia("(max-width: 500px)").matches) {
+        headerSelector.html(questions[slideIndex-1]);
+        return
+    }
     let underlineSelector = $('#slide-'+ slideIndex).find('.underline');
     let typeWriter = new TypeWriter([questions[slideIndex-1]], headerSelector, underlineSelector,false);
     setTimeout(typeWriter.typeWriter.bind(typeWriter),550);

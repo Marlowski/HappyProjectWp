@@ -106,6 +106,7 @@ main .slide:nth-child(2n) {
     flex-flow: column nowrap;
     align-items: flex-start;
     margin-bottom: 30px;
+    z-index: 400;
 }
 .main-title {
     display: flex;
@@ -163,6 +164,7 @@ main .slide:nth-child(2n) {
     width: 100%;
     text-align: center;
     cursor: pointer;
+    z-index: 9999;
 }
 .btn-light {
     color: #FFFFFF;
@@ -251,7 +253,7 @@ body.dragging, body.dragging * {
     flex: 1 1 350px;
     position: relative;
     border-radius: 50px;
-    overflow: hidden;
+    overflow: hidden !important;
     font-size: 1.25rem;
     -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
     -moz-box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
@@ -267,7 +269,7 @@ body.dragging, body.dragging * {
     position: relative;
     z-index: 2;
     transition: color 200ms ease-in;
-    overflow: hidden;
+    overflow: hidden !important;
 }
 .form-container label:before {
     width: 18px;
@@ -659,14 +661,16 @@ body.dragging, body.dragging * {
 /* includes phone query */
 @media only screen and (max-width: 579px) {
     .main-title span, .underline {
-        font-size: 2.3rem;
-        line-height: 49px;
+        font-size: 2rem !important;
+        line-height: 40px !important;
+        text-align: center !important;
+        padding: 0 !important;
     }
     .sort-list {
         width: 80%;
     }
     .slide {
-        padding: 40px 20px;
+        padding: 20px 20px 200px 20px !important;
     }
     #intro-title-container h1 {
         font-size: 16.5vw;
@@ -680,17 +684,19 @@ body.dragging, body.dragging * {
     #start-btn {
         width: 60%;
     }
-    .main-title span, .underline {
-        font-size: 2rem;
-        line-height: 40px;
-        text-align: center;
+    .main-title-container {
+        margin-top: 20%;
     }
     .sort-container {
-        top: 45%;
+        top: 45% !important;
     }
     .sort-container p {
         font-size: 14px;
         text-align: center;
+        padding: 0 55px;
+    }
+    .form-container {
+        border-radius: 0;
     }
     /* - study page - */
     #watermark {
@@ -698,18 +704,28 @@ body.dragging, body.dragging * {
         font-size: 5vw;
     }
     #study-data-slide .slide {
-        padding: 40px 35px;
         align-content: stretch;
     }
+    #study-data-slide .main-title-container {
+         margin-top: 1%;
+        margin-bottom: 110px;
+    }
     #study-data-slide #slide-1 h1 {
-        font-size: 6.5vw;
-        margin-bottom: 30%;
+        font-size: 11.5vw;
+        margin-bottom: 15%;
+        text-align: center;
+        line-height: 13vw;
+    }
+    #slide-1 p {
+        text-align: center;
+        font-size: 1rem;
+        padding: 0 25px;
     }
     .horizontal-bar-graph {
         margin-top: -20vw;
     }
     .bar-label {
-        padding: 5px;
+        padding: 30px 5px;
         height: 30vw;
     }
     .bar h2 {
@@ -719,6 +735,9 @@ body.dragging, body.dragging * {
         font-size: 1rem;
         right: 5%;
         bottom: 20vw;
+    }
+    .form-container label {
+        padding: 12px 65px 12px 20px;
     }
     #slide-3 .slide-seperator-container,
     #slide-8 .slide-seperator-container {
@@ -738,6 +757,9 @@ body.dragging, body.dragging * {
     #slide-3 .slide-seperator-elem .bar-label {
         width: 18vw;
     }
+    #slide-4 .main-title span, #slide-4 .underline {
+        font-size: 1.5rem !important;
+    }
     #study-data-slide .bar {
         font-size: 3vw;
     }
@@ -756,19 +778,29 @@ body.dragging, body.dragging * {
         height: 60%;
     }
     #study-data-slide #bar-graph-5 .bar-label {
-        height: 18.5vw;
+        height: 16.5vw;
         width: 45vw;
+    }
+    #bar-graph-5.horizontal-bar-graph {
+        margin-top: 3vw;
+    }
+    #study-data-slide #slide-5 .main-title span, #study-data-slide #slide-5 .underline {
+        font-size: 5vw !important;
+        line-height: 6vw !important;
     }
     #slide-6 .slide-seperator-container {
         flex-flow: row wrap;
     }
     #slide-6 .slide-seperator-elem .bar-label,
     #slide-8 .slide-seperator-elem .bar-label {
-        height: 17.5vw;
+        height: 10vw;
         width: 26vw;
     }
     #slide-6 .horizontal-bar-graph {
         margin-top: -10vw;
+    }
+    #study-data-slide #slide-6 .main-title-container {
+        margin-bottom: 70px;
     }
     .vertical-bar-graph .bar-label {
         width: 25vw !important;
@@ -784,8 +816,23 @@ body.dragging, body.dragging * {
     #slide-8 .bar h2 {
         font-size: 3vw;
     }
+    #slide-8 .bar-label {
+        padding: 50px 5px;
+    }
+    #study-data-slide #slide-8 .bar {
+        margin: 15px 0 !important;
+    }
+    #study-data-slide #slide-8 .horizontal-bar-graph {
+        margin-bottom: 7vw;
+    }
     #study-data-slide #slide-8 .hz-graph-legend {
         font-size: 3vw;
+    }
+    #study-data-slide #slide-8 .main-title-container {
+        margin-bottom: 0 !important;
+    }
+    .next-btn {
+        bottom: 130px;
     }
 }
 
@@ -863,7 +910,7 @@ body.dragging, body.dragging * {
 @media only screen and (max-height: 970px) {
     .vertical-bar-graph {
         flex: 1 1 90%;
-        height: 65%;
+        height: 55%;
     }
     .vertical-bar-graph .bar-label {
         width: 13vw;

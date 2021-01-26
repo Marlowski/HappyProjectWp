@@ -1,0 +1,51 @@
+
+@media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+    #start-btn {
+        position: relative;
+        bottom: 0;
+        margin-top: 5%;
+    }
+
+    /* - firstColor - */
+    .or-nav-elem {
+        border: 1px solid #3bba9c;
+    }
+
+    .nav-controller a:hover,
+    .next-btn:hover,
+    #watermark span,
+    .subtitle,
+    .hz-graph-legend span:last-of-type {
+        color: #3bba9c;
+    }
+
+    .sort-list li,
+    .form-container label:before,
+    .or-nav-elem--active,
+    .bar-display,
+    .vertical-bar-graph .bar-line-container .bar-elem .bar-display,
+    .pyramid-label-content {
+        background-color: #3bba9c;
+    }
+
+    /* - secondColor - */
+    .pyramid-elem, .pyramid-label-content {
+        background-color: #00031f;
+    }
+
+    /* - thirdColor - */
+    main .slide:nth-child(2n),
+    #study-data-slide .slide:nth-child(2n+1),
+    .bar-label {
+        background-color: #2C323C;
+    }
+    .hz-graph-legend {
+        color: #2C323C;
+    }
+
+    @media only screen and (max-width: 800px) {
+        #start-btn {
+            bottom: 0;
+        }
+    }
+}
